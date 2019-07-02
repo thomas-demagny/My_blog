@@ -1,0 +1,140 @@
+{{ extends ('layout/layout.twig') }}
+
+
+ {% block content %}
+     <div class="container text-center">
+
+         <h2 class="thin">The best place to discover me !</h2>
+         <p class="text-muted">
+             J'aime bien mon café noir le matin:<br/>
+             le code aussi...
+         </p>
+     </div>
+     <!-- /Intro-->
+
+     <!-- Highlights - jumbotron -->
+     <div class="jumbotron top-space">
+         <div class="container">
+
+             <h3 class="text-center thin">Mes compétences</h3>
+
+             <div class="row">
+                 <div class="col-md-3 col-sm-6 highlight">
+                     <div class="h-caption"><h4><i class="fa fa-cogs fa-5"></i>Back-end</h4></div>
+                     <div class="h-body text-center">
+                         <p>Développement d'applications en PHP avec base de données Mysql</p>
+                     </div>
+                 </div>
+                 <div class="col-md-3 col-sm-6 highlight">
+                     <div class="h-caption"><h4><i class="fa fa-flash fa-5"></i>Front-end</h4></div>
+                     <div class="h-body text-center">
+                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, commodi, sequi quis ad fugit omnis cumque a libero error nesciunt molestiae repellat quos perferendis numquam quibusdam rerum repellendus laboriosam reprehenderit! </p>
+                     </div>
+                 </div>
+                 <div class="col-md-3 col-sm-6 highlight">
+                     <div class="h-caption"><h4><i class="fa fa-check fa-5"></i>Logiciels</h4></div>
+                     <div class="h-body text-center">
+                         <p></p>
+                     </div>
+                 </div>
+                 <div class="col-md-3 col-sm-6 highlight">
+                     <div class="h-caption"><h4><i class="fa fa-smile-o fa-5"></i>Author's support</h4></div>
+                     <div class="h-body text-center">
+                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, excepturi, maiores, dolorem quasi reprehenderit illo accusamus nulla minima repudiandae quas ducimus reiciendis odio sequi atque temporibus facere corporis eos expedita? </p>
+                     </div>
+                 </div>
+             </div> <!-- /row  -->
+
+         </div>
+     </div>
+     <!-- /Highlights -->
+
+     <!-- container -->
+     <div class="container">
+
+         <h2 class="text-center top-space">Les Articles</h2>
+         <br>
+
+         <div class="row">
+             <div class="col-sm-6">
+                 <h3>Article 1</h3>
+                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus autem deserunt dolorum earum eos mollitia nisi optio quo reiciendis veritatis! A accusantium, cupiditate dolor illo itaque magnam officia qui ratione!</p>
+             </div>
+             <div class="col-sm-6">
+                 <h3>Article 2</h3>
+                 <p>
+                     <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam cupiditate expedita hic molestiae, odit pariatur quod sapiente vero! Ab aliquid cupiditate doloribus harum omnis placeat quas quisquam recusandae repudiandae saepe!</span><span>Aliquid amet at autem delectus dolor dolorem dolorum eius eos et eum facere id illo ipsum odit perferendis placeat porro quis quisquam repellat repudiandae rerum sed soluta sunt temporibus, voluptatibus!</span></p>
+             </div>
+         </div> <!-- /row -->
+
+         <div class="row">
+             <div class="col-sm-6">
+                 <h3>Article 3</h3>
+                 <p>
+                     <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus at aut consequuntur, debitis fuga incidunt iste itaque, magni nulla pariatur quam quidem reprehenderit sint? Aliquam eaque exercitationem libero quae quisquam.</span><span>Aliquam nobis nulla repudiandae. Alias aspernatur dolorem ea ex excepturi inventore ipsa iusto minima, mollitia odio perspiciatis porro quis quo repellendus, sed similique tempore. Aut fuga incidunt itaque quo sunt.</span>
+                 </p>
+             </div>
+             <div class="col-sm-6">
+                 <h3>Article 4</h3>
+                 <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad beatae consectetur corporis dicta, eaque illo illum ipsum iste magnam molestiae necessitatibus possimus praesentium repudiandae sapiente voluptatum! Accusantium maxime placeat soluta.</span><span>A adipisci aliquam amet consequatur ea eaque eligendi esse illo incidunt labore nemo possimus quia quo reiciendis rem sapiente sint soluta, tempore vel voluptatem? Amet quibusdam recusandae voluptatem? Illum, laborum.</span></p>
+             </div>
+         </div> <!-- /row -->
+
+     </div>
+     <!-- /container -->
+
+
+
+
+     <br/>
+     <section class="container" id="contact">
+         <h2 class="top-space text-center">Contactez-moi </h2>
+         <div class="row">
+             <div class="col-md-6 col-lg-6">
+                 <form>
+                     <div class="form-group">
+                         <div class="form-row">
+                             <div class="col-md-6">
+                                 <input type="text" class="form-control" placeholder="Nom" id="name" required="">
+                             </div>
+
+                             <div class="col-md-6">
+                                 <input type="text" class="form-control" placeholder="Prénom" id="surname" required="">
+                             </div>
+
+                         </div>
+                     </div>
+                     <div class="form-group">
+                         <input type="email" class="form-control" placeholder="@mail" id="email" required="">
+                     </div>
+
+                     <div class="form-group">
+                         <input type="text" class="form-control" placeholder="Objet" id="object" required="">
+                     </div>
+
+
+                     <div class="form-group">
+                         <textarea class="form-control" rows="8" required="" placeholder="Votre message"></textarea>
+                     </div>
+
+                     <div class="form-group mt-3">
+                         <button type="button" class="btn btn-primary" id="submit">Envoyer</button>
+
+                     </div>
+                 </form>
+             </div>
+
+             <div class="col-md-6 col-lg-6">
+                 <h3 class="our-address">Mon adresse</h3>
+                 <address>
+                     <p></p>
+                     <p>10000 Troyes</p>
+                     <p>Tel: +33 6 02 73 42 87</p>
+                     <a href="mailto:demagny.t@hotmail.fr">demagny.t@hotmail.fr</a>
+                 </address>
+             </div>
+         </div>
+     </section>
+     <!-- end contact -->
+
+ {% endblock %}
