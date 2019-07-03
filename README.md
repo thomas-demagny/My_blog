@@ -28,16 +28,16 @@ Let's start with the pages that are useful to all Internet users.
 
 On the home page you will need to present the following information:
 
-    Your first and last name;
-    A photo and/or logo;
-    A catchphrase that looks like you ( example: "Martin Durand, the developer you need!");
-    A menu allowing you to navigate through all the pages of your website;
-    A contact form (at the submission of this form, an email with all this information will be sent to you) with the following fields:
-        surname/first name
-        contact email
-        message
-    a link to your CV in pdf format;
-    and all the links to the social networks where we can follow you (Github, LinkedIn, Twitter...).
+  *Your first and last name;
+  *A photo and/or logo;
+  *A catchphrase that looks like you ( example: "Martin Durand, the developer you need!");
+  *A menu allowing you to navigate through all the pages of your website;
+  *A contact form (at the submission of this form, an email with all this information will be   sent to you) with the following fields:
+  * surname/first name
+  *contact email
+  *message
+  a link to your CV in pdf format;
+  and all the links to the social networks where we can follow you (Github, LinkedIn,   Twitter...).
 
 On the page listing all blogs posts (from the most recent to the oldest), you must display the following information for each blog post:
 
@@ -64,18 +64,15 @@ License
 -------
 **MIT**
 
-
 Made with
 -----------
 
-* PHP 7.2 with Twig .
-* Database : Mysql, Phpmyadmin .
-* Bootstrap 4 .
-
-
+  * PHP 7.2 with Twig
+  * Database : Mysql, Phpmyadmin
+  * Bootstrap 4
 
 Credits
 -------
-* Design and development: **Thomas DEMAGNY** - https://oc.thomas-demagny.com .
+  * Design and development: **Thomas DEMAGNY** - https://oc.thomas-demagny.com .
  
 
