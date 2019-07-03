@@ -1,3 +1,48 @@
 @font-face {
-    font-family: 'Mukta Mahee', sans-serif;
+    font-family: 'News Cycle', sans-serif;
 }
+
+body {
+    font-family: 'News Cycle', sans-serif;
+background-color: #addef3;
+
+}
+
+
+section{
+    font-family: 'News Cycle', sans-serif;
+    background-color: #325D88;
+    border: #1a3047 2px solid;
+    margin: 50px 0 50px;
+}
+
+
+
+
+
+
+
+
+
+form {
+    padding-bottom: 30px;
+    padding-top : 30px;
+}
+
+address, .our-address {
+    text-align: center;
+    text-align: -moz-center;
+    text-align: -webkit-center;
+    padding-top: 30px;
+}
+.blog_page{
+    padding-top: 56px;
+}
+
+footer{
+   background-color:  #f7c8c6;
+}
+
+
+/* buttons style */
+
