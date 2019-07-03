@@ -5,14 +5,13 @@ namespace Controller;
 
 
     use Twig\Environment;
-    use Twig\Extension\DebugExtension;
     use Twig\Loader\FilesystemLoader;
 
 
 
     /**
      * Class FrontController
-     * @package Pam\Controller
+     * @package Controller
      */
 class FrontController extends Controller
 {
@@ -20,7 +19,7 @@ class FrontController extends Controller
 
     const DEFAULT_CONTROLLER = 'HomeController';
 
-    const DEFAULT_ACTION = 'IndexAction';
+    const DEFAULT_ACTION = 'indexAction';
     /**
      * @var null
      */
@@ -55,8 +54,6 @@ class FrontController extends Controller
             'cache' => false,
             'debug' => true
         ));
-        $twig->addExtension(new DebugExtension());
-
 
         $this->twig = $twig;
     }

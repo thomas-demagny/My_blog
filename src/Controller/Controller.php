@@ -8,7 +8,7 @@ use Twig\Environment;
 
 /**
  * Class Controller
- * @package Pam\Controller
+ * @package Controller
  */
 abstract class Controller
 {
@@ -26,13 +26,12 @@ abstract class Controller
         $this->twig = $twig;
     }
 
-
+/**
+ * @return Environment
+   */
     public function render(string $view, array $params = [])
     {
         return $this->twig->render($view, $params);
     }
-
-
-
 
 }
