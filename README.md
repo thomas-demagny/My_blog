@@ -68,4 +68,3 @@ In the footer menu, there must be a link to access the blog administration.
 # Credits
   - Design and development: **Thomas DEMAGNY** - https://oc.thomas-demagny.com .
  
-
