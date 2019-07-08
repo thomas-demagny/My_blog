@@ -1,0 +1,83 @@
+{%   extends 'layout/layout.twig' %}
+
+    {% block header %}
+
+        <div class="jumbotron top-space text-center">
+            <h1 class="mt-md-4">Je suis Thomas DEMAGNY</h1>
+                <p class="lead">Développeur Php/Symfony.</p>
+                    <div class="text-center mt-md-5">
+                        <h2 class="thin">Vous souhaitez en savoir plus ?</h2>
+                        <p class="text-muted">
+                            J'aime bien mon café noir le matin:<br/>
+                            le code aussi...<br/>
+                            Mais le plus simple c'est encore de consulter mon CV ainsi que mon portfolio!</p>
+                        <p><a class="btn btn-primary btn-lg" role="button" href="" >MON CV</a></p>
+                    </div>
+        </div>
+
+    {% endblock %}
+
+    {% block content %}
+
+    <section class="container" id="contact">
+        <h2 class="text-center mt-md-4">Contactez-moi </h2>
+            <div class="row">
+                <div class="col-md-6 col-lg-6">
+                    <form>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Nom" id="name" required="">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Prénom" id="surname" required="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="@mail" id="email" required="">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Objet" id="object" required="">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="8" required="" placeholder="Votre message"></textarea>
+                        </div>
+                        <div class="form-group mt-3">
+                            <button type="button" class="btn btn-primary" id="submit">Envoyer</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-md-6 col-lg-6">
+                    <h3 class="our-address">Mon adresse</h3>
+                        <address>
+                            <p></p>
+                            <p>10000 Troyes</p>
+                            <p>Tel: +33 6 02 73 42 87</p>
+                            <a href="mailto:demagny.t@hotmail.fr">demagny.t@hotmail.fr</a>
+                        </address>
+                </div>
+            </div>
+    </section>
+
+    {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

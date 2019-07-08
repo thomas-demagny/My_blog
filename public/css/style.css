@@ -1,0 +1,51 @@
+@font-face {
+    font-family: 'News Cycle', sans-serif;
+}
+
+body {
+    font-family: 'News Cycle', sans-serif;
+background-color: #addef3;
+
+}
+
+/* Contact form */
+section{
+    font-family: 'News Cycle', sans-serif;
+    background-color: rgb(170, 170, 170);
+    border: #1a3047 2px solid;
+    margin: 50px 0 50px;
+}
+
+form {
+    padding-bottom: 30px;
+    padding-top : 30px;
+}
+
+address,
+.our-address {
+    text-align: center;
+    text-align: -moz-center;
+    text-align: -webkit-center;
+    padding-top: 30px;
+}
+/* end contact form */
+
+.blog_page{
+    padding-top: 56px;
+}
+aside{
+    margin-top: 49.5px;
+}
+
+.footer1,
+.footer2 {
+
+   background-color:  #f7c8c6;
+    max-height: 12vh;
+}
+
+
+
+
+/* buttons style */
+
