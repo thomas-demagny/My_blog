@@ -3,7 +3,7 @@ DROP SCHEMA IF EXISTS blog ;
 -- -----------------------------------------------------
 -- Schema blog
 -- -----------------------------------------------------
-CREATE SCHEMA blog DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA blog CHARACTER SET utf8 ;
 USE blog ;
 
 -- -----------------------------------------------------
@@ -17,7 +17,8 @@ CREATE TABLE articles (
                           `content` TEXT NOT NULL,
                           `author` VARCHAR(50) NOT NULL,
                           `dte` DATETIME NOT NULL,
-                          PRIMARY KEY (`id`))
+                          PRIMARY KEY (`id`)
+                      )
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8;
 
@@ -70,7 +71,7 @@ CREATE TABLE comments (
 -- -----------------------------------------------------
 START TRANSACTION;
 USE blog;
-INSERT INTO articles (`id`,`imageLink`,`title`, `lead`, `content`, `author`, `dte`) VALUES (1,'../public/src/images/php.jpg','PHP', 'PHP', 'php c\'est super cool', 'kiki', DEFAULT);
-INSERT INTO articles (`id`, `title`, `lead`, `content`, `author`, `dte`) VALUES (2, 'Mysql', 'mysql', 'blblblblblbblblblbl', 'koukou', DEFAULT);
-INSERT INTO articles (`id`,`imageLink`,`title`, `lead`, `content`, `author`, `dte`) VALUES (3,'../public/src/images/php.jpg','Symfony', 'Framework', 'Soyez un super musicien avec composer et Symfony !', 'Tom', DEFAULT);
+INSERT INTO articles (id, imageLink, title, subtitle, content, author, dte) VALUES (1,'../public/src/images/php.jpg','PHP', 'PHP', 'php c\'est super cool', 'kiki', DEFAULT);
+INSERT INTO articles (id, imageLink, title, subtitle, content, author, dte) VALUES (2,'../public/src/images/php.jpg','Mysql', 'mysql', 'ceci sera un article sur Mysql', 'koukou', DEFAULT);
+INSERT INTO articles (id, imageLink, title, subtitle, content, author, dte) VALUES (3,'../public/src/images/php.jpg','Symfony', 'Framework', 'Soyez un super musicien avec composer et Symfony !', 'Tom', DEFAULT);
 COMMIT;
