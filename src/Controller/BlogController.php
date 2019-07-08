@@ -3,6 +3,9 @@
 
 namespace Controller;
 
+use Model\ArticlesModel;
+use Model\Model;
+
 
 class BlogController extends Controller
 {
@@ -10,6 +13,9 @@ class BlogController extends Controller
      * @return \Twig\Environment
      */
     public function indexAction(){
-        return $this->render('blog.twig');
+
+$articles = (new ArticlesModel)->getArticles;
+        return $this->render('blog.twig',array('articles' =>$articles));
     }
 }
+
