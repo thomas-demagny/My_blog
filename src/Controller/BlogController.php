@@ -3,8 +3,8 @@
 
 namespace Controller;
 
-use Model\ArticlesModel;
-use Model\Model;
+use Model\articleModel;
+
 
 
 class BlogController extends Controller
@@ -14,8 +14,17 @@ class BlogController extends Controller
      */
     public function indexAction(){
 
-$articles = (new ArticlesModel)->getArticles;
+$articles = (new articleModel)->getArticles();
         return $this->render('blog.twig',array('articles' =>$articles));
     }
+
+    public function readAction(){
+
+        $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+        $articles = (new articleModel)->getArticle($id);
+
+        return $this->render('article.twig', array('articles' => $articles));
+    }
+
 }
 

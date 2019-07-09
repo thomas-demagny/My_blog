@@ -3,10 +3,10 @@
 
 namespace Model;
 
-use Model\PDOConnexion;
 
 
-class ArticleModel extends PDOConnexion
+
+class articleModel extends PDOConnexion
 {
     /**
      * @return array

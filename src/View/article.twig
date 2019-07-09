@@ -1,98 +1,97 @@
 {% extends 'layout/layout.html.twig' %}
 
-    {% block title %}Articles{% endblock %}
-{% block content%}<!-- Page Content -->
-    <div class="container">
+{% block title %}Articles{% endblock %}
+{% block content%}
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
 
-        <div class="row">
+            <!-- Title -->
+            <h1 class="mt-4">{{ articles.title }}</h1>
 
-            <!-- Post Content Column -->
-            <div class="col-lg-8">
+            <!-- Author -->
+            <p class="lead">
+                {{ articles.subtitle }} par {{ articles.author }}
 
-                <!-- Title -->
-                <h1 class="mt-4">{{ articles.title }}</h1>
+            </p>
 
-                <!-- Author -->
-                <p class="lead">
-                    {{ articles.subtitle }} par {{ articles.author }}
+            <hr>
 
-                </p>
+            <!-- Date/Time -->
+            <p>Edité le {{ articles.dte }}</p>
 
-                <hr>
+            <hr>
 
-                <!-- Date/Time -->
-                <p>Edité le {{ articles.dte }}</p>
+            <!-- Preview Image -->
+            <img class="img-fluid rounded" src="{{ articles.imageLink }}" alt="">
 
-                <hr>
+            <hr>
 
-                <!-- Preview Image -->
-                <img class="img-fluid rounded" src="{{ articles.imageLink }}" alt="">
+            <!-- Post Content -->
 
-                <hr>
+            <article class="lead">{{ articles.subtitle }}</article>
 
-                <!-- Post Content -->
-
-                <article class="lead">{{ articles.subtitle }}</article>
-
-                <p>{{ articles.content }}</p>
+            <p>{{ articles.content }}</p>
 
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
 
-                <hr>
+            <hr>
 
-                <!-- Comments Form -->
-                <div class="card my-4">
-                    <h5 class="card-header">Laisser un commentaire:</h5>
-                    <div class="card-body">
-                        <form>
-                            <div class="form-group">
-                                <textarea class="form-control" rows="3"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Envoyer</button>
-                        </form>
-                    </div>
-                </div>
-
-                <!-- Single Comment -->
-                <div class="media mb-4">
-                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                    <div class="media-body">
-                        <h5 class="mt-0">{{ comment.author }}</h5>
-
-                    </div>
-                </div>
-
-                <!-- Comment with nested comments -->
-                <div class="media mb-4">
-                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                    <div class="media-body">
-                        <h5 class="mt-0">Commenter Name</h5>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-
-                        <div class="media mt-4">
-                            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                            <div class="media-body">
-                                <h5 class="mt-0">Commenter Name</h5>
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                            </div>
+            <!-- Comments Form -->
+            <div class="card my-4">
+                <h5 class="card-header">Laisser un commentaire:</h5>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3"></textarea>
                         </div>
-
-                        <div class="media mt-4">
-                            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                            <div class="media-body">
-                                <h5 class="mt-0">Commenter Name</h5>
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                            </div>
-                        </div>
-
-                    </div>
+                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                    </form>
                 </div>
-
             </div>
+
+            <!-- Single Comment -->
+            <div class="media mb-4">
+                <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                <div class="media-body">
+                    <h5 class="mt-0">{{ comment.author }}</h5>
+
+                </div>
+            </div>
+
+            <!-- Comment with nested comments -->
+            <div class="media mb-4">
+                <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                <div class="media-body">
+                    <h5 class="mt-0">Commenter Name</h5>
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+
+                    <div class="media mt-4">
+                        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                        <div class="media-body">
+                            <h5 class="mt-0">Commenter Name</h5>
+                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        </div>
+                    </div>
+
+                    <div class="media mt-4">
+                        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                        <div class="media-body">
+                            <h5 class="mt-0">Commenter Name</h5>
+                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
     </div>
+</div>
 
 {% endblock %}
