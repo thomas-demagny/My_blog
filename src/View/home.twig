@@ -1,23 +1,19 @@
-{%   extends 'layout/layout.twig' %}
-
-    {% block header %}
-
-        <div class="jumbotron top-space text-center">
+{%   extends 'layout/layout.html.twig' %}
+    {% block content %}
+    <header>
+        <div class="jumbotron-dark top-space text-center">
             <h1 class="mt-md-4">Je suis Thomas DEMAGNY</h1>
                 <p class="lead">Développeur Php/Symfony.</p>
                     <div class="text-center mt-md-5">
-                        <h2 class="thin">Vous souhaitez en savoir plus ?</h2>
                         <p class="text-muted">
                             J'aime bien mon café noir le matin:<br/>
                             le code aussi...<br/>
                             Mais le plus simple c'est encore de consulter mon CV ainsi que mon portfolio!</p>
-                        <p><a class="btn btn-primary btn-lg" role="button" href="" >MON CV</a></p>
+                        <p><a class="btn btn-primary btn-lg" role="button" href="#" >MON CV</a></p>
                     </div>
         </div>
 
-    {% endblock %}
-
-    {% block content %}
+    </header>
 
     <section class="container" id="contact">
         <h2 class="text-center mt-md-4">Contactez-moi </h2>
