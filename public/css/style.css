@@ -4,7 +4,8 @@
 
 body {
     font-family: 'News Cycle', sans-serif;
-background-color: #addef3;
+    color : red;
+    background-color: #000000;
 
 }
 
@@ -12,7 +13,7 @@ background-color: #addef3;
 section{
     font-family: 'News Cycle', sans-serif;
     background-color: rgb(170, 170, 170);
-    border: #1a3047 2px solid;
+    border: #fff 2px solid;
     margin: 50px 0 50px;
 }
 
@@ -30,17 +31,15 @@ address,
 }
 /* end contact form */
 
-.blog_page{
+.blog_page,
+.article_page{
     padding-top: 56px;
 }
-aside{
-    margin-top: 49.5px;
-}
 
-.footer1,
-.footer2 {
 
-   background-color:  #f7c8c6;
+.footer{
+
+   background-color:  #0f0f0f;
     max-height: 12vh;
 }
 
