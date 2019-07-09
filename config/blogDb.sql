@@ -9,6 +9,7 @@ USE blog ;
 -- -----------------------------------------------------
 -- Table articles
 -- -----------------------------------------------------
+
 CREATE TABLE articles
 (
             id            INT             UNSIGNED   PRIMARY KEY  AUTO_INCREMENT,
@@ -18,15 +19,18 @@ CREATE TABLE articles
             content       TEXT            NOT NULL,
             author        VARCHAR(50)     NOT NULL,
             dte           DATETIME        NOT NULL
-                      )
+)
+
+
     ENGINE = InnoDB
-    DEFAULT CHARACTER SET = utf8;
+    CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
 -- Table user
 -- -----------------------------------------------------
 CREATE TABLE user (
+
             id            MEDIUMINT(9)        UNSIGNED  PRIMARY KEY     AUTO_INCREMENT,
             name          VARCHAR(70)         NOT NULL,
             surname       VARCHAR(70)         NOT NULL,
@@ -36,6 +40,9 @@ CREATE TABLE user (
 
           UNIQUE INDEX `email_UNIQUE` (`email` ASC),
           UNIQUE INDEX `password_UNIQUE` (`password` ASC))
+
+
+
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8;
 
@@ -43,6 +50,7 @@ CREATE TABLE user (
 -- -----------------------------------------------------
 -- Table comments
 -- -----------------------------------------------------
+
 CREATE TABLE comments
 (
             id          MEDIUMINT        UNSIGNED     PRIMARY KEY       AUTO_INCREMENT,
@@ -61,8 +69,10 @@ CREATE TABLE comments
     FOREIGN KEY (`user_id`)
     REFERENCES user (`id`)
 )
+
+
     ENGINE = InnoDB
-    DEFAULT CHARACTER SET = utf8;
+    CHARACTER SET = utf8;
 
 
 -- Data for table articles
