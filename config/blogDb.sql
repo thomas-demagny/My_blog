@@ -9,62 +9,60 @@ USE blog ;
 -- -----------------------------------------------------
 -- Table articles
 -- -----------------------------------------------------
-CREATE TABLE articles (
-                          id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-                          imageLink VARCHAR(70) NOT NULL,
-                          title VARCHAR(100) NOT NULL,
-                          subtitle VARCHAR(100) NOT NULL,
-                          content TEXT NOT NULL,
-                          author VARCHAR(50) NOT NULL,
-                          dte DATETIME NOT NULL,
-                          PRIMARY KEY (`id`)
+CREATE TABLE articles
+(
+            id            INT             UNSIGNED   PRIMARY KEY  AUTO_INCREMENT,
+            imageLink     VARCHAR(70)     NOT NULL,
+            title         VARCHAR(100)    NOT NULL,
+            subtitle      VARCHAR(100)    NOT NULL,
+            content       TEXT            NOT NULL,
+            author        VARCHAR(50)     NOT NULL,
+            dte           DATETIME        NOT NULL
                       )
     ENGINE = InnoDB
-    CHARACTER SET = utf8;
+    DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
 -- Table user
 -- -----------------------------------------------------
 CREATE TABLE user (
-                      id MEDIUMINT(9) UNSIGNED NOT NULL AUTO_INCREMENT,
-                      name VARCHAR(70) NOT NULL,
-                      surname VARCHAR(70) NOT NULL,
-                      nickname VARCHAR(70) NOT NULL,
-                      email VARCHAR(100) NOT NULL,
-                      password VARCHAR(50) NOT NULL,
-                      PRIMARY KEY (`id`),
-                      UNIQUE INDEX `email_UNIQUE` (`email` ASC),
-                      UNIQUE INDEX `password_UNIQUE` (`password` ASC))
+            id            MEDIUMINT(9)        UNSIGNED  PRIMARY KEY     AUTO_INCREMENT,
+            name          VARCHAR(70)         NOT NULL,
+            surname       VARCHAR(70)         NOT NULL,
+            nickname      VARCHAR(70)         NOT NULL,
+            email         VARCHAR(100)        NOT NULL,
+            password      VARCHAR(50)         NOT NULL,
+
+          UNIQUE INDEX `email_UNIQUE` (`email` ASC),
+          UNIQUE INDEX `password_UNIQUE` (`password` ASC))
     ENGINE = InnoDB
-    CHARACTER SET = utf8;
+    DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
 -- Table comments
 -- -----------------------------------------------------
-CREATE TABLE comments (
-                          id MEDIUMINT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
-                          author VARCHAR(50) NOT NULL,
-                          comment TEXT NOT NULL,
-                          dte DATETIME NOT NULL,
-                          articles_id INT(11) UNSIGNED NOT NULL,
-                          user_id MEDIUMINT(9) UNSIGNED NOT NULL,
-                          PRIMARY KEY (`id`),
-                          INDEX `fk_comments_articles_idx` (`articles_id` ASC),
-                          INDEX `fk_comments_user1_idx` (`user_id` ASC),
-                          CONSTRAINT `fk_comments_articles`
-                              FOREIGN KEY (`articles_id`)
-                                  REFERENCES articles(`id`)
-                                  ON DELETE NO ACTION
-                                  ON UPDATE NO ACTION,
-                          CONSTRAINT `fk_comments_user1`
-                              FOREIGN KEY (`user_id`)
-                                  REFERENCES user(`id`)
-                                  ON DELETE NO ACTION
-                                  ON UPDATE NO ACTION)
+CREATE TABLE comments
+(
+            id          MEDIUMINT        UNSIGNED     PRIMARY KEY       AUTO_INCREMENT,
+            author      VARCHAR(50)      NOT NULL,
+            comment     TEXT             NOT NULL,
+            dte         DATETIME         NOT NULL,
+            articles_id INT              UNSIGNED,
+            user_id     MEDIUMINT        UNSIGNED,
+
+    INDEX `fk_comments_articles_idx` (`articles_id` ASC),
+    INDEX `fk_comments_user1_idx` (`user_id` ASC),
+    CONSTRAINT `fk_comments_articles`
+    FOREIGN KEY (`articles_id`)
+    REFERENCES articles (`id`),
+    CONSTRAINT `fk_comments_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES user (`id`)
+)
     ENGINE = InnoDB
-    CHARACTER SET = utf8;
+    DEFAULT CHARACTER SET = utf8;
 
 
 -- Data for table articles
