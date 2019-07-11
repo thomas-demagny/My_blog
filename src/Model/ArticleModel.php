@@ -26,7 +26,7 @@ class articleModel extends PDOConnexion
     public function getArticle($id)
     {
         $database = $this->databaseConnexion();
-        $req = $database->prepare('SELECT * FROM articles WHERE id');
+        $req = $database->prepare('SELECT * FROM articles WHERE id = ?');
         $req->execute(array($id));
         return $req->fetchObject();
     }
