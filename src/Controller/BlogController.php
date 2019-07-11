@@ -4,7 +4,7 @@
 namespace Controller;
 
 use Model\articleModel;
-
+use Model\commentModel;
 
 
 class BlogController extends Controller
@@ -22,8 +22,9 @@ $articles = (new articleModel)->getArticles();
 
         $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
         $articles = (new articleModel)->getArticle($id);
+        $comments = (new commentModel)->getComments($id);
 
-        return $this->render('article.twig', array('articles' => $articles));
+        return $this->render('article.twig', array('articles' => $articles, 'comments' => $comments));
     }
 
 }
