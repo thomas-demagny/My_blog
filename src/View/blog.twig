@@ -26,7 +26,7 @@
                                     <article class="card-text">{{ articles.content }}</article>
                                 </div>
                                 <div class="card-footer text-muted text-md-left">
-                                    Edité le {{ articles.dte | date ("d/m/Y h:m") }} par {{ articles.author }} .
+                                    Edité le {{ articles.dte | date ('d-m-Y à H:i') }} par {{ articles.author }} .
                                 </div>
                             </div>
                         {% endfor %}

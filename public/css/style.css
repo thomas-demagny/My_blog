@@ -36,7 +36,10 @@ address,
     padding-top: 56px;
 }
 
-
+.comments{
+    color : white;
+    border: red 1px solid;
+}
 .footer{
 
    background-color:  #0f0f0f;
