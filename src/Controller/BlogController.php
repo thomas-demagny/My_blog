@@ -20,9 +20,9 @@ $articles = (new articleModel)->getArticles();
 
     public function readAction(){
 
-        $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-        $articles = (new articleModel)->getArticle($id);
-        $comments = (new commentModel)->getComments($id);
+        $dataId = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+        $articles = (new articleModel)->getArticle($dataId);
+        $comments = (new commentModel)->getComments($dataId);
 
         return $this->render('article.twig', array('articles' => $articles, 'comments' => $comments));
     }

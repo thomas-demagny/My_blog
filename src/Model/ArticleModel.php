@@ -20,14 +20,14 @@ class articleModel extends PDOConnexion
     }
 
     /**
-     * @param $id
+     * @param $dataId
      * @return mixed
      */
-    public function getArticle($id)
+    public function getArticle($dataId)
     {
         $database = $this->databaseConnexion();
         $req = $database->prepare('SELECT * FROM articles WHERE id = ?');
-        $req->execute(array($id));
+        $req->execute(array($dataId));
         return $req->fetchObject();
     }
 

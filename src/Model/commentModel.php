@@ -11,14 +11,14 @@ namespace Model;
 class commentModel extends PDOConnexion
 {
     /**
-     * @param $id
+     * @param $dataId
      * @return array
      */
-    public function getComments($id)
+    public function getComments($dataId)
     {
         $database = $this->databaseConnexion();
         $req = $database->prepare('SELECT * FROM comments WHERE articles_id = ?');
-        $req->execute(array($id));
+        $req->execute(array($dataId));
         return $req->fetchAll();
     }
 }
