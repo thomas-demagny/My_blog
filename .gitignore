@@ -1,5 +1,4 @@
 .idea/
-phpunit.xml/
 vendor/
 blogDb.sql/
 public/images/
