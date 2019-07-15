@@ -5,14 +5,22 @@
 body {
     font-family: 'News Cycle', sans-serif;
     color : red;
-    background-color: #000000;
+    background: radial-gradient(closest-side ellipse at center, white, black);;
+
 
 }
+
+.jumbotron-dark{
+    margin: 0;
+    background-image: radial-gradient(closest-side ellipse at center,black ,white);
+}
+
+
 
 /* Contact form */
 section{
     font-family: 'News Cycle', sans-serif;
-    background-color: rgb(170, 170, 170);
+    background-color: rgba(255, 255, 255, 0.6);
     border: #fff 2px solid;
     margin: 50px 0 50px;
 }
