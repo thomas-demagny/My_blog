@@ -2,4 +2,4 @@
 vendor/
 blogDb.sql/
 public/images/
-public/node_module/
+public/node_modules/
