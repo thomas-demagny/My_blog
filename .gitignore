@@ -2,3 +2,5 @@
 phpunit.xml/
 vendor/
 blogDb.sql/
+public/images/
+public/node_module/
