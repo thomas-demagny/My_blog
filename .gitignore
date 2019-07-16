@@ -1,6 +1,5 @@
 .idea/
 vendor/
 blogDb.sql/
-public/images/
-public/node_modules/bootstrap/
-public/node_modules/jquery/
+images/
+node_modules/
