@@ -8,7 +8,7 @@
   ],
   "license": "MIT",
   "main": "index.php",
-  "homepage": "https://philippebeck.net",
+  "homepage": "",
   "repository": "github:thomas-demagny/My_blog",
   "bugs": "https://github.com/thomas-demagny/My_blog/issues",
   "dependencies": {
