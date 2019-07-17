@@ -1,7 +1,5 @@
 {% extends 'layout/layout.html.twig' %}
 
-    {% block title %}Blog Page{% endblock %}
-
         {% block content %}
             <!-- Page Content -->
             <div class="blog_page container">
@@ -14,8 +12,8 @@
                         <h1 class="my-4 text-center">Tom's Blog
                             <small>Les derniers articles</small>
                         </h1>
+                        <!-- Blog Post -->
                         {% for articles in articles %}
-                            <!-- Blog Post -->
                             <div class="card mb-4">
                                 <img class="card-img-top" src="{{ articles.imageLink }}" alt="image de mon blog">
                                 <div class="card-body text-md-left">
@@ -30,9 +28,7 @@
                                 </div>
                             </div>
                         {% endfor %}
-
-
-                        <!-- Pagination -->
+                        <!-- Pagination delete?-->
                         <ul class="pagination justify-content-center mb-4">
                             <li class="page-item">
                                 <a class="page-link" href="#">&larr; Plus anciens</a>
