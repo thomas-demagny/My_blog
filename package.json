@@ -1,0 +1,23 @@
+{
+  "name": "my_blog",
+  "version": "0.1.0",
+  "description": "blog",
+  "keywords": [
+    "",
+    ""
+  ],
+  "license": "MIT",
+  "main": "index.php",
+  "homepage": "",
+  "repository": "github:thomas-demagny/My_blog",
+  "bugs": "https://github.com/thomas-demagny/My_blog/issues",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1"
+  },
+  "author": {
+    "name": "thomas demagny",
+    "email": "demagny.t@hotmail.fr",
+    "url": "oc.thomas-demagny.com"
+  }
+}

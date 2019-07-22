@@ -21,7 +21,8 @@
     "require": {
         "twig/twig": "^2.11",
         "php": "7.2",
-        "ext-PDO": "^7.2"
+        "ext-PDO": "^7.2",
+        "heimrichhannot/popper.js": "^1.12"
 
     },
     "require-dev": {

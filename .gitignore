@@ -1,3 +1,5 @@
 .idea/
-phpunit.xml/
 vendor/
+blogDb.sql/
+images/
+node_modules/
