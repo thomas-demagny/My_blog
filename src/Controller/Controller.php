@@ -26,12 +26,18 @@ abstract class Controller
         $this->twig = $twig;
     }
 
-/**
- * @return Environment
-   */
+    /**
+     * @return Environment
+     */
     public function render(string $view, array $params = [])
     {
         return $this->twig->render($view, $params);
+    }
+
+
+    public function addFlash()
+    {
+       // @TODO faire message d'alert !!!!
     }
 
 }

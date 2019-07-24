@@ -26,22 +26,38 @@ class UserController extends Controller
      */
     public function signupAction()
     {
-
         $info['firstname'] = filter_input(INPUT_POST, 'signupfirstname', FILTER_SANITIZE_SPECIAL_CHARS);
-        $info['surname'] = filter_input(INPUT_POST, 'signupsurname', FILTER_SANITIZE_SPECIAL_CHARS);
+        $info['surname'] = strtoupper(filter_input(INPUT_POST, 'signupsurname', FILTER_SANITIZE_SPECIAL_CHARS));
         $info['username'] = filter_input(INPUT_POST, 'signupusername', FILTER_SANITIZE_SPECIAL_CHARS);
         $info['email'] = filter_input(INPUT_POST, 'signupemail', FILTER_SANITIZE_SPECIAL_CHARS);
         $info['password'] = filter_input(INPUT_POST, 'signuppassword', FILTER_SANITIZE_STRING);
         $info['confirmpassword'] = filter_input(INPUT_POST, 'confirmpassword', FILTER_SANITIZE_STRING);
-        $usermodel = new UserModel();
+        $userModel = new UserModel();
 
-        $data = $usermodel->controlUser($info ['username'], $info['email']);
+// on vérifie si user et mdp
+        if (empty($info['username']) || empty($info['email']) || $userModel->controlUser($info)) {
+            echo "<script>alert('Un pseudo ou une adresse mail est déjà enregistrée à ce nom vérifiez que tous les champs soient bien remplis')</script>";
 
-        if ($data == true) {
-            echo "<script>alert('erreur ! Un pseudo ou une adresse mail est déjà enregistrée, veuillez vous connecter .');</script>";
-            return $this->render('connexion.twig');
+            return $this->render('connexion.twig', array('info' => $info));
+
         }
+
+        if (!empty($info['firstname']) AND !empty($info['surname']) AND !empty($info['password']) AND !empty($info['confirmpassword'])) {
+            if ($info['password'] == $info['confirmpassword']) {
+                $info['password'] = password_hash($info['password'], PASSWORD_BCRYPT);
+                $userModel->addUser($info);
+                echo "<script>alert('Merci vous êtes bien inscrit')</script>";
+                return $this->render('home.twig');
+            }
+            echo "<script>alert('les deux mdp doivent être identiques')</script>";
+            return $this->render('connexion.twig', array('info' => $info));
+        }
+        return $this->render('connexion.twig');
+
     }
+
 }
+
+
 
 

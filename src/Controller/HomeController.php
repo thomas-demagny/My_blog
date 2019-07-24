@@ -19,6 +19,9 @@ namespace Controller;
 
     }
 
+        /**
+         * @return \Twig\Environment
+         */
         public function portfolioAction()
         {
             return $this->render('portfolio.twig');

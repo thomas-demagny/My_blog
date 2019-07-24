@@ -11,15 +11,15 @@ namespace Model;
 class UserModel extends PDOConnexion
 {
     /**
-     * @param $username
-     * @param $email
+     * @param $data
+     *
      * @return bool
      */
-    public function controlUser($username, $email)
+    public function controlUser($data)
     {
         $database = $this->databaseConnexion();
         $req = $database->prepare('SELECT * FROM user WHERE username = ? OR email = ?  LIMIT 1');
-        $req->execute(array($username, $email));
+        $req->execute(array($data['username'],$data['email']));
         if ($req->fetch()) {
             return true;
         }
@@ -35,7 +35,9 @@ class UserModel extends PDOConnexion
         $database = $this->databaseConnexion();
         $req = $database->prepare("INSERT INTO user (firstname, surname, username, email, password) VALUES (?,?,?,?,?)");
         $req->execute(array($info['firstname'], $info['surname'], $info['username'], $info['email'], $info['password']));
+        return true;
     }
+
 
 
 }
