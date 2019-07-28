@@ -8,14 +8,16 @@ namespace Controller;
     use Twig\Loader\FilesystemLoader;
 
 
-
     /**
      * Class FrontController
      * @package Controller
      */
-class FrontController extends Controller
+    class FrontController extends Controller
 {
-    const DEFAULT_PATH = 'Controller\\';
+        /**
+         *
+         */
+        const DEFAULT_PATH = 'Controller\\';
 
     const DEFAULT_CONTROLLER = 'HomeController';
 
@@ -33,8 +35,9 @@ class FrontController extends Controller
      */
     protected $action = self::DEFAULT_ACTION;
 
+
     /**
-     * FrontController constructor
+     * FrontController constructor.
      */
     public function __construct()
     {
@@ -58,10 +61,11 @@ class FrontController extends Controller
         $this->twig = $twig;
     }
 
-    /**
-     * @return mixed|void
-     */
-    public function parseUrl()
+
+        /**
+         *
+         */
+        public function parseUrl()
     {
         $access = filter_input(INPUT_GET, 'access');
         if (!isset($access)) {
@@ -72,10 +76,11 @@ class FrontController extends Controller
         $this->action = count($access) == 1 ? 'index' : $access[1];
     }
 
-    /**
-     * @return mixed|void
-     */
-    public function setController()
+
+        /**
+         *@return mixed|void
+         */
+        public function setController()
     {
         $this->controller = ucfirst(strtolower($this->controller)) . 'Controller';
         $this->controller = self::DEFAULT_PATH . $this->controller;
