@@ -4,10 +4,13 @@
 namespace Model;
 
 
-
-
+/**
+ * Class articleModel
+ * @package Model
+ */
 class articleModel extends PDOConnexion
 {
+
     /**
      * @return array
      */
@@ -18,6 +21,7 @@ class articleModel extends PDOConnexion
         $req->execute();
         return $req->fetchAll();
     }
+
 
     /**
      * @param $dataId

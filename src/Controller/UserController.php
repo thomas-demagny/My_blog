@@ -6,14 +6,19 @@ namespace Controller;
 
 use Model\UserModel;
 
+
 /**
  * Class UserController
  * @package Controller
  */
 class UserController extends Controller
 {
+
     /**
-     * @return \Twig\Environment
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
      */
     public function indexAction()
     {
@@ -21,8 +26,12 @@ class UserController extends Controller
         return $this->render('connexion.twig');
     }
 
+
     /**
-     * @return \Twig\Environment
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
      */
     public function signupAction()
     {
@@ -34,9 +43,9 @@ class UserController extends Controller
         $info['confirmpassword'] = filter_input(INPUT_POST, 'confirmpassword', FILTER_SANITIZE_STRING);
         $userModel = new UserModel();
 
-// on vérifie si user et mdp
+
         if (empty($info['username']) || empty($info['email']) || $userModel->controlUser($info)) {
-            echo "<script>alert('Un pseudo ou une adresse mail est déjà enregistrée à ce nom vérifiez que tous les champs soient bien remplis')</script>";
+            echo "<script>alert('Une pseudo et/ou une adresse mail existe déjà, merci de vous connecter')</script>";
 
             return $this->render('connexion.twig', array('info' => $info));
 
@@ -49,14 +58,55 @@ class UserController extends Controller
                 echo "<script>alert('Merci vous êtes bien inscrit')</script>";
                 return $this->render('home.twig');
             }
-            echo "<script>alert('les deux mdp doivent être identiques')</script>";
+            echo "<script>alert('Vos deux mots de passe doivent être identique')</script>";
             return $this->render('connexion.twig', array('info' => $info));
+
         }
         return $this->render('connexion.twig');
 
     }
 
+    /**
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function signinAction()
+    {
+
+        $username['username'] = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
+        $password['password'] = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+
+        $userModel = new UserModel();
+
+        $user = $userModel->verifyUser($username);
+        if ($user !== false) {
+            $user = $userModel->getUser($username);
+            if (password_verify($password, $username['password'])) {
+
+                echo "<script>alert('Vous êtes connecté !')</script>";
+                return $this->render('home.twig');
+            }
+            echo "<script>alert('L\'identifiant et/ou le mot de passe sont incorrect  !')</script>";
+        }
+        return $this->render('connexion.twig');
+
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

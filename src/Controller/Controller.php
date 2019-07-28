@@ -17,8 +17,9 @@ abstract class Controller
      */
     private $twig;
 
+
     /**
-     * Controller constructor
+     * Controller constructor.
      * @param Environment $twig
      */
     public function __construct(Environment $twig)
@@ -26,8 +27,14 @@ abstract class Controller
         $this->twig = $twig;
     }
 
+
     /**
-     * @return Environment
+     * @param string $view
+     * @param array $params
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
      */
     public function render(string $view, array $params = [])
     {
@@ -35,9 +42,6 @@ abstract class Controller
     }
 
 
-    public function addFlash()
-    {
-       // @TODO faire message d'alert !!!!
-    }
+
 
 }
