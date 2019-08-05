@@ -10,7 +10,7 @@ use PDO;
  * Class Model
  * @package Model
  */
-abstract class PDOManager
+abstract class Database
 {
     /**
      * @var null
@@ -23,7 +23,7 @@ abstract class PDOManager
      */
     public function databaseConnexion()
 {
-    require_once '../config/database.php'; //TODO modifier les ../ si non valide.
+    require_once '../config/dbconfig.php'; //TODO modifier les ../ si non valide.
 
     if ((self::$database)=== null)
     {

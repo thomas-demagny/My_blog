@@ -8,7 +8,7 @@ namespace Model;
  * Class commentModel
  * @package Model
  */
-class commentModel extends PDOConnexion
+class commentManager extends Database
 {
     /**
      * @param $dataId

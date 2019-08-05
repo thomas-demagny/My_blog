@@ -8,9 +8,21 @@ namespace Model;
  * Class UserModel
  * @package Model
  */
-class UserModel extends PDOConnexion
+class UserManager extends Database
 {
-
+    /**
+     * @param $username
+     * @param $password
+     * @return bool|mixed|\PDOStatement
+     */
+    public function getUser($username, $password)
+    {
+        $database = $this->databaseConnexion();
+        $result = $database->prepare('SELECT * FROM user WHERE username= ? AND password= ?');
+        $result->execute(array($username, $password));
+        $req = $result->fetchObject();
+        return ($result);
+    }
     /**
      * @param $data
      * @return bool
@@ -18,9 +30,9 @@ class UserModel extends PDOConnexion
     public function controlUser($data)
     {
         $database = $this->databaseConnexion();
-        $req = $database->prepare('SELECT * FROM user WHERE username = ? OR email = ?  LIMIT 1');
-        $req->execute(array($data['username'],$data['email']));
-        if ($req->fetch()) {
+        $result = $database->prepare('SELECT * FROM user WHERE username = ? OR email = ?  LIMIT 1');
+        $result->execute(array($data['username'], $data['email']));
+        if ($result->fetch()) {
             return true;
         }
         return false;
@@ -31,12 +43,14 @@ class UserModel extends PDOConnexion
      * @param $info
      * @return bool
      */
-    public function addUser($info){
+    public function addUser($info)
+    {
 
         $database = $this->databaseConnexion();
-        $req = $database->prepare("INSERT INTO user (firstname, surname, username, email, password, role, register_date) VALUES (?,?,?,?,?,'membre', CURRENT_DATE)");
-        $req->execute(array($info['firstname'], $info['surname'], $info['username'], $info['email'], $info['password']));
-        return true;
+        $result = $database->prepare("INSERT INTO user (firstname, surname, username, email, password, role, register_date) VALUES (?,?,?,?,?,'membre', CURRENT_DATE)");
+        $result = $result->execute(array(
+            $info['firstname'], $info['surname'], $info['username'], $info['email'], $info['password']));
+        return $result;
     }
 
 
@@ -47,23 +61,13 @@ class UserModel extends PDOConnexion
     public function verifyUser($data)
     {
         $database = $this->databaseConnexion();
-        $req = $database->prepare('SELECT * FROM user WHERE username= ?');
-        $req->execute(array($data['username']));
-        if ($req->fetch()) {
+        $result = $database->prepare('SELECT * FROM user WHERE username= ?');
+        $result->execute(array($data['username']));
+        if ($result->fetch()) {
             return true;
         }
         return false;
     }
 
-    /**
-     * @param $username
-     * @return bool|mixed|\PDOStatement
-     */
-    public function getUser($username){
-        $database = $this->databaseConnexion();
-        $req = $database->prepare('SELECT * FROM user WHERE username= ?');
-        $req->execute(array($username));
-        $req = $req->fetch();
-        return $req;
-    }
+
 }

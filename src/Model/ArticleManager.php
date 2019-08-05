@@ -8,7 +8,7 @@ namespace Model;
  * Class articleModel
  * @package Model
  */
-class articleModel extends PDOConnexion
+class articleManager extends Database
 {
 
     /**
@@ -17,9 +17,9 @@ class articleModel extends PDOConnexion
     public function getArticles()
     {
         $database = $this->databaseConnexion();
-        $req = $database->prepare('SELECT * FROM articles ORDER BY dte');
-        $req->execute();
-        return $req->fetchAll();
+        $result = $database->prepare('SELECT * FROM articles ORDER BY dte');
+        $result->execute();
+        return $result->fetchAll();
     }
 
 
@@ -30,9 +30,9 @@ class articleModel extends PDOConnexion
     public function getArticle($dataId)
     {
         $database = $this->databaseConnexion();
-        $req = $database->prepare('SELECT * FROM articles WHERE id = ?');
-        $req->execute(array($dataId));
-        return $req->fetchObject();
+        $result = $database->prepare('SELECT * FROM articles WHERE id = ?');
+        $result->execute(array($dataId));
+        return $result->fetchObject();
     }
 
 }
