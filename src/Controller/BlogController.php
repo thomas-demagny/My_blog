@@ -3,8 +3,8 @@
 
 namespace Controller;
 
-use Model\articleModel;
-use Model\commentModel;
+use Model\articleManager;
+use Model\commentManager;
 
 
 /**
@@ -23,7 +23,7 @@ class BlogController extends Controller
      */
     public function indexAction(){
 
-$articles = (new articleModel)->getArticles();
+$articles = (new articleManager)->getArticles();
         return $this->render('blog.twig',array('articles' =>$articles));
     }
 
@@ -37,8 +37,8 @@ $articles = (new articleModel)->getArticles();
     public function readAction(){
 
         $dataId = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-        $articles = (new articleModel)->getArticle($dataId);
-        $comments = (new commentModel)->getComments($dataId);
+        $articles = (new articleManager)->getArticle($dataId);
+        $comments = (new commentManager)->getComments($dataId);
 
         return $this->render('article.twig', array('articles' => $articles, 'comments' => $comments));
     }

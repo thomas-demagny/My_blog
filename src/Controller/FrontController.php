@@ -4,20 +4,20 @@
 namespace Controller;
 
 
-    use Twig\Environment;
-    use Twig\Loader\FilesystemLoader;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
 
 
-    /**
-     * Class FrontController
-     * @package Controller
-     */
-    class FrontController extends Controller
+/**
+ * Class FrontController
+ * @package Controller
+ */
+class FrontController extends Controller
 {
-        /**
-         *
-         */
-        const DEFAULT_PATH = 'Controller\\';
+    /**
+     *
+     */
+    const DEFAULT_PATH = 'Controller\\';
 
     const DEFAULT_CONTROLLER = 'HomeController';
 
@@ -62,10 +62,10 @@ namespace Controller;
     }
 
 
-        /**
-         *
-         */
-        public function parseUrl()
+    /**
+     *
+     */
+    public function parseUrl()
     {
         $access = filter_input(INPUT_GET, 'access');
         if (!isset($access)) {
@@ -77,10 +77,10 @@ namespace Controller;
     }
 
 
-        /**
-         *@return mixed|void
-         */
-        public function setController()
+    /**
+     * @return mixed|void
+     */
+    public function setController()
     {
         $this->controller = ucfirst(strtolower($this->controller)) . 'Controller';
         $this->controller = self::DEFAULT_PATH . $this->controller;
