@@ -10,7 +10,7 @@ use PDO;
  * Class Model
  * @package Model
  */
-abstract class PDOConnexion
+abstract class PDOManager
 {
     /**
      * @var null
