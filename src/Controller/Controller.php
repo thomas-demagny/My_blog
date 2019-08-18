@@ -17,7 +17,7 @@ abstract class Controller
      */
     private $twig;
     /**
-
+//
     /**
      * Controller constructor.
      * @param Environment $twig
@@ -31,15 +31,15 @@ abstract class Controller
 
     /**
      * @param string $view
-     * @param array $params
+     * @param array $var
      * @return string
      * @throws \Twig\Error\LoaderError
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function render(string $view, array $params = [])
+    public function render(string $view, array $var = [])
     {
-        return $this->twig->render($view, $params);
+        return $this->twig->render($view, $var);
     }
 
 

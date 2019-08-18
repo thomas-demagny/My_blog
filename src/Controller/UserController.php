@@ -77,6 +77,8 @@ class UserController extends Controller
      */
     public function signinAction()
     {
+        $info['username'] = filter_input(INPUT_POST, 'signup_username', FILTER_SANITIZE_SPECIAL_CHARS);
+        $info['password'] = filter_input(INPUT_POST, 'signup_password', FILTER_SANITIZE_STRING);
 
         if (!empty($info['username']) && !empty($info['password'])) {
             $userModel = new UserManager();

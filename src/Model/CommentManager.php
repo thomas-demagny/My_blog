@@ -8,7 +8,7 @@ namespace Model;
  * Class commentModel
  * @package Model
  */
-class commentManager extends Database
+class CommentManager extends Database
 {
     /**
      * @param $dataId

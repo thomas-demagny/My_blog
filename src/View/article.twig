@@ -19,7 +19,8 @@
             <hr>
 
             <!-- Date/Time -->
-            <p>Edité le {{ articles.dte | date ('d-m-Y à H : i') }}</p>
+            <p>Ecrit le {{ articles.dte | date ('d-m-Y à H : i') }}</p>
+            <p>Modifié le {{ articles.mod_dte | date ('d-m-Y') }}</p>
 
             <hr>
 
@@ -45,9 +46,9 @@
                 <h5 class="card-header">Laisser un commentaire:</h5>
                 <div class="card-body">
                     <form>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div>
+                        <label class="form-group">
+                            <textarea class="form-control" rows="3" cols="150"></textarea>
+                        </label>
                         <button type="submit" class="btn btn-primary">Envoyer</button>
                     </form>
                 </div>
