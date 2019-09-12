@@ -16,8 +16,7 @@ abstract class Controller
      * @var Environment
      */
     private $twig;
-    /**
-//
+
     /**
      * Controller constructor.
      * @param Environment $twig
@@ -39,10 +38,18 @@ abstract class Controller
      */
     public function render(string $view, array $var = [])
     {
+        extract($var);
         return $this->twig->render($view, $var);
     }
 
 
-
+    /**
+     * @param $message
+     */
+    public function alert($message)
+    {
+        $alert = "<script>alert('$message');</script>";
+        echo filter_var($alert);
+    }
 
 }
