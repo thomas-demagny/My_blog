@@ -2,7 +2,6 @@
 
 
 use Controller\FrontController;
-
 use Tracy\Debugger;
 
 

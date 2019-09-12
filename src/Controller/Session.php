@@ -5,10 +5,10 @@ namespace Controller;
 
 
 /**
- * Class SessionController
+ * Class Session
  * @package Controller
  */
-class SessionController
+class Session
 {
     /**
      * @var mixed
@@ -69,7 +69,7 @@ class SessionController
     /**
      * @return mixed
      */
-    public function getSession()
+    public function findSession()
     {
         return $this->session;
     }
@@ -77,7 +77,7 @@ class SessionController
     /**
      * @return |null
      */
-    public function getUser()
+    public function findUser()
     {
         if ($this->isLogged() === false){
             return null;
