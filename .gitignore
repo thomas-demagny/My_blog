@@ -1,1 +1,5 @@
-
+.idea/
+vendor/
+blogDb.sql/
+images/
+node_modules/
