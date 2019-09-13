@@ -19,8 +19,14 @@ class FrontController extends Controller
      */
     const DEFAULT_PATH = 'Controller\\';
 
+    /**
+     *
+     */
     const DEFAULT_CONTROLLER = 'HomeController';
 
+    /**
+     *
+     */
     const DEFAULT_ACTION = 'indexAction';
     /**
      * @var null
@@ -47,18 +53,20 @@ class FrontController extends Controller
         $this->setAction();
     }
 
+
     /**
-     * @return mixed|void
+     *
      */
     public function setTemplate()
     {
         $loader = new FilesystemLoader('../src/View');
-        $twig = new Environment($loader, array(
+        $this->twig = new Environment($loader, array(
             'cache' => false,
             'debug' => true
-        ));
 
-        $this->twig = $twig;
+        ));
+        $this->twig->addGlobal('session', filter_var_array($_SESSION));
+
     }
 
 
@@ -78,7 +86,7 @@ class FrontController extends Controller
 
 
     /**
-     * @return mixed|void
+     *
      */
     public function setController()
     {
@@ -89,8 +97,9 @@ class FrontController extends Controller
         }
     }
 
+
     /**
-     * @return mixed|void
+     *
      */
     public function setAction()
     {
@@ -100,8 +109,9 @@ class FrontController extends Controller
         }
     }
 
+
     /**
-     * @return mixed|void
+     *
      */
     public function run()
     {
