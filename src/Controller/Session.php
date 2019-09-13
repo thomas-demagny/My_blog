@@ -34,12 +34,14 @@ class Session
 
 
     /**
-     * @param string $username
-     * @param string $email
+     * @param $userid
+     * @param $username
+     * @param $email
      */
-    public function create(string $username, string $email)
+    public function create($id, $username, $email)
     {
         $_SESSION['user'] = [
+            'id' => $id,
             'username' => $username,
             'email' => $email
         ];
@@ -77,13 +79,14 @@ class Session
     /**
      * @return |null
      */
-    public function findUser()
+    public function getUser($var)
     {
         if ($this->isLogged() === false){
             return null;
         }
-        return $this->user;
+        return $this->user[$var];
     }
+
 
 
 }
