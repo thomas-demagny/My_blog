@@ -45,18 +45,18 @@
             <div class="card my-4">
                 <h5 class="card-header">Laisser un commentaire:</h5>
                 <div class="card-body">
-                    <form>
-                        <label class="form-group">
-                            <textarea class="form-control" rows="3" cols="150"></textarea>
+                    <form method="post" action="../public/?id={{ articles.id }}&access=blog!comment">
+                        <label for="comment" class="form-group">
+                            <textarea name="comments" class="form-control" rows="3" cols="150"></textarea>
                         </label>
-                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                        <button type="submit" class="btn btn-primary">Commenter</button>
                     </form>
                 </div>
             </div>
             {% for comments in comments %}
             <!-- Single Comment -->
             <div class="media mb-4">
-                <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="photo de l'utilisateur">
                 <div class="media-body">
                     <h5 class="mt-0"> Par {{ comments.author }}</h5>
                     <p> le {{ comments.dte | date ('d-m-Y à H : i') }} </p>

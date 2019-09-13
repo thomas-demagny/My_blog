@@ -20,20 +20,20 @@
                      role="tabpanel" aria-labelledby="pills-signin-tab">
                     <div class="col-sm-12 border border-primary shadow rounded pt-2">
 
-                        <form method="post" name="signin_Form" enctype="multipart/form-data"
-                              action="../public/?access=user!signin">
+                        <form class="form-group" method="POST" name="signin_Form" enctype="multipart/form-data"
+                              action="../public/?access=user!log">
                             <div class="form-group">
                                 <label class="font-weight-bold" for="username">Pseudo <span class="text-danger">*</span></label>
                                 <input type="text" name="username" id="username" class="form-control"
                                        placeholder="ex: Super user" value="{{ info.username }}" required>
                             </div>
-                            <div class="form-group">
+                            <div>
                                 <label class="font-weight-bold" for="password">Mot de passe <span
                                             class="text-danger">*</span></label>
                                 <input type="password" name="password" id="password" class="form-control"
                                        placeholder="***********" required>
                             </div>
-                            <div class="form-group">
+                            <div>
                                 <div class="row">
                                     <div class="col">
                                         <label><input type="checkbox" name="condition" id="condition"> Se souvenir de
@@ -41,7 +41,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div>
                                 <input type="submit" name="submit" value="Se connecter" class="btn btn-secondary col-4">
                             </div>
                         </form>
@@ -52,8 +52,8 @@
                     <div class="col-sm-12 border border-primary shadow rounded pt-4">
                         <div class="text-center"><img src="../public/images/Creative-Tail-Animal-panda.svg.png"
                                                       class="rounded-circle border p-1" alt="un panda"></div>
-                        <form method="post" id="signup_Form" enctype="multipart/form-data"
-                              action="../public/?access=user!signup">
+                        <form method="POST" id="signup_Form" enctype="multipart/form-data"
+                              action="../public/?access=user!register">
                             <div class="form-group">
 
                                 <h3>Vos données utilisateur</h3>
