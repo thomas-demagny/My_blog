@@ -4,20 +4,23 @@
 namespace Model;
 
 
+use Model;
+
+
 /**
- * Class articleModel
+ * Class ArticleManager
  * @package Model
  */
-class articleManager extends Database
+class ArticleManager extends Model\Model
 {
 
     /**
      * @return array
      */
-    public function getArticles()
+    public function findAll()
     {
-        $database = $this->databaseConnexion();
-        $result = $database->prepare('SELECT * FROM articles ORDER BY dte');
+        $pdo = $this->getPDO();
+        $result = $pdo->prepare('SELECT * FROM articles ORDER BY dte');
         $result->execute();
         return $result->fetchAll();
     }
@@ -27,10 +30,10 @@ class articleManager extends Database
      * @param $dataId
      * @return mixed
      */
-    public function getArticle($dataId)
+    public function find(int $dataId)
     {
-        $database = $this->databaseConnexion();
-        $result = $database->prepare('SELECT * FROM articles WHERE id = ?');
+        $pdo = $this->getPDO();
+        $result = $pdo->prepare('SELECT * FROM articles WHERE id = ?');
         $result->execute(array($dataId));
         return $result->fetchObject();
     }
