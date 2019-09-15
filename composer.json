@@ -14,15 +14,15 @@
     "autoload": {
         "psr-4": {
             "Controller\\": "src/Controller",
-            "Model\\": "src/Model"
+            "Model\\":"src/Model"
         }
     },
 
     "require": {
         "twig/twig": "^2.11",
         "php": "7.2",
-        "ext-PDO": "^7.2",
-        "heimrichhannot/popper.js": "^1.12"
+        "ext-PDO": "^7.2"
+
 
     },
     "require-dev": {

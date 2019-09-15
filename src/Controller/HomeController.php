@@ -10,15 +10,26 @@ namespace Controller;
  */
     class HomeController extends Controller
     {
+
         /**
-         * @return \Twig\Environment
+         * @return string
+         * @throws \Twig\Error\LoaderError
+         * @throws \Twig\Error\RuntimeError
+         * @throws \Twig\Error\SyntaxError
          */
-    public function indexAction()
+        public function indexAction()
     {
         return $this->render('home.twig');
 
     }
 
+
+        /**
+         * @return string
+         * @throws \Twig\Error\LoaderError
+         * @throws \Twig\Error\RuntimeError
+         * @throws \Twig\Error\SyntaxError
+         */
         public function portfolioAction()
         {
             return $this->render('portfolio.twig');

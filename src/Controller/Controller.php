@@ -17,21 +17,41 @@ abstract class Controller
      */
     private $twig;
 
+    protected $session;
     /**
-     * Controller constructor
+     * Controller constructor.
      * @param Environment $twig
      */
     public function __construct(Environment $twig)
     {
         $this->twig = $twig;
+        $this->session =  new Session();
+
     }
 
-/**
- * @return Environment
-   */
-    public function render(string $view, array $params = [])
+
+    /**
+     * @param string $view
+     * @param array $var
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function render(string $view, array $var = [])
     {
-        return $this->twig->render($view, $params);
+        extract($var);
+        return $this->twig->render($view, $var);
+    }
+
+
+    /**
+     * @param $message
+     */
+    public function alert($message)
+    {
+        $alert = "<script>alert('$message');</script>";
+        echo filter_var($alert);
     }
 
 }

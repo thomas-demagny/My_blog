@@ -1,79 +1,63 @@
-{%   extends 'layout/layout.html.twig' %}
-    {% block content %}
-    <header>
-        <div class="jumbotron-dark py-4 text-center">
-            <h1 class="mt-md-4">Je suis Thomas DEMAGNY</h1>
-                <p class="lead">Développeur Php/Symfony.</p>
-                    <div class="text-center mt-md-5">
-                        <p class="text-muted">
-                            J'aime bien mon café noir le matin:<br/>
-                            le code aussi...<br/>
-                            Mais le plus simple c'est encore de consulter mon CV ainsi que mon portfolio!</p>
-                        <p><a class="btn btn-primary btn-lg" role="button" href="#" >MON CV</a></p>
+{% extends 'layout/layout.html.twig' %}
+{% block content %}
+
+<header>
+    <div class="jumbotron-dark py-4 text-center">
+        <h1 class="title mt-md-4">Thomas DEMAGNY</h1>
+        <p class="lead sub-title">Développeur Php/Symfony.</p>
+        <div class="text-center mt-md-5">
+            <p class="text-muted">
+                J'aime bien mon café noir le matin:<br />
+                le code aussi...<br />
+                Mais le plus simple c'est encore de consulter mon CV ainsi que mon portfolio!</p>
+            <p><a class="btn btn-secondary btn-lg btn-cv" role="button" href="../public/images/Cv-Thomas-Demagny.pdf">MON CV</a></p>
+            {{ session.user.username }}
+        </div>
+    </div>
+
+</header>
+
+<section class="container">
+    <h2 class=" text-center mt-md-5">Contactez-moi </h2>
+    <div class="row contact_form">
+        <div class="col-md-6 col-lg-6">
+            <form name="contact" method="post" action="#">
+                <!--Ajouter le lien -->
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" placeholder="Nom" id="name" data-validation-required-message="Ce champ est obligatoire !">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" placeholder="Prénom" id="surname" data-validation-required-message="Ce champ est obligatoire !">
+                        </div>
                     </div>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="email" id="email" required data-validation-required-message="Ce champ est obligatoire !">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Objet" id="object" required data-validation-required-message="Ce champ est obligatoire !">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" rows="8" required data-validation-required-message="Ce champ est obligatoire" placeholder="Votre message"></textarea>
+                </div>
+                <div class="form-group mt-3">
+                    <button type="button" class="btn btn-secondary" id="submit">Envoyer</button>
+                </div>
+            </form>
         </div>
 
-    </header>
+        <div class="col-md-6 col-lg-6">
 
-    <section class="container">
-        <h2 class="text-center mt-md-4">Contactez-moi </h2>
-            <div class="row">
-                <div class="col-md-6 col-lg-6">
-                    <form name="contact" method="post" action="#"> <!--Ajouter le lien -->
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Nom" id="name" data-validation-required-message="Ce champ est obligatoire !">
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Prénom" id="surname" required data-validation-required-message="Ce champ est obligatoire !">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="@mail" id="email" required data-validation-required-message="Ce champ est obligatoire !">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Objet" id="object" required data-validation-required-message="Ce champ est obligatoire !">
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="8" required data-validation-required-message="Ce champ est obligatoire" placeholder="Votre message"></textarea>
-                        </div>
-                        <div class="form-group mt-3">
-                            <button type="button" class="btn btn-primary" id="submit">Envoyer</button>
-                        </div>
-                    </form>
-                </div>
+            <address class="our-address">
+                <p><img src="../public/images/Se7sZkE1_400x400.jpg" class="img-fluid rounded-circle border p-1" alt="it's me !"></p>
+                <p>10000 Troyes</p>
+                <p>Tel: +33 6 02 73 42 87</p>
+                <a href="mailto:demagny.t@hotmail.fr">demagny.t@hotmail.fr</a>
+            </address>
+        </div>
+    </div>
+</section>
 
-                <div class="col-md-6 col-lg-6">
-                    <h3 class="our-address">Mes coordonnées</h3>
-                        <address>
-                            <p></p>
-                            <p>10000 Troyes</p>
-                            <p>Tel: +33 6 02 73 42 87</p>
-                            <a href="mailto:demagny.t@hotmail.fr">demagny.t@hotmail.fr</a>
-                        </address>
-                </div>
-            </div>
-    </section>
-
-    {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+{% endblock %}

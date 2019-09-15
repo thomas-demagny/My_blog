@@ -1,52 +1,44 @@
 {% extends 'layout/layout.html.twig' %}
 
-        {% block content %}
-            <!-- Page Content -->
-            <div class="blog_page container">
+{% block content %}
+<!-- Page Content -->
+<div class="blog_page container">
 
-                <div class="row">
+    <div class="row">
 
-                    <!-- Blog Entries Column -->
-                    <div class="col-md text-center">
+        <!-- Blog Entries Column -->
+        <div class="offset-2 col-md-8 offset-2">
 
-                        <h1 class="my-4 text-center">Tom's Blog
-                            <small>Les derniers articles</small>
-                        </h1>
-                        <!-- Blog Post -->
-                        {% for articles in articles %}
-                            <div class="card mb-4">
-                                <img class="card-img-top" src="{{ articles.imageLink }}" alt="image de mon blog">
-                                <div class="card-body text-md-left">
-                                    <a href="../public/?id={{ articles.id }}&access=blog!read">
+            <h1 class="my-4 text-center">Les derniers articles</h1>
+            <!-- Blog Post -->
+            {% for articles in articles %}
+            <div class="card mb-4">
+                <img class="card-img-top" src="{{ articles.imageLink }}" alt="image de mon blog">
+                <div class="card-body text-md-left">
+                    <a href="../public/?id={{ articles.id }}&access=blog!read">
 
-                                        <h2 class="card-title">{{ articles.title }}</h2></a>
-                                    <h3 class="lead">{{ articles.subtitle }}</h3>
-                                    <article class="card-text">{{ articles.content }}</article>
-                                </div>
-                                <div class="card-footer text-muted text-md-left">
-                                    Edité le {{ articles.dte | date ('d-m-Y à H:i') }} par {{ articles.author }} .
-                                </div>
-                            </div>
-                        {% endfor %}
-                        <!-- Pagination delete?-->
-                        <ul class="pagination justify-content-center mb-4">
-                            <li class="page-item">
-                                <a class="page-link" href="#">&larr; Plus anciens</a>
-                            </li>
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#">Nouveaux &rarr;</a>
-                            </li>
-                        </ul>
-                    </div>
+                        <h2 class="card-title">{{ articles.title }}</h2>
+                    </a>
+                    <h3 class="lead">{{ articles.subtitle }}</h3>
+                    <article class="card-text">{{ articles.content }}</article>
+                </div>
+                <div class="card-footer text-muted text-md-left">
+                    Edité le {{ articles.dte | date ('d-m-Y à H:i') }} par {{ articles.author }} .
                 </div>
             </div>
-    {% endblock %}
-
-
-
-
-
-
-
+            {% endfor %}
+            <!-- Pagination delete?-->
+            <ul class="pagination justify-content-center mb-4">
+                <li class="page-item">
+                    <a class="page-link" href="#">&larr; Plus anciens</a>
+                </li>
+                <li class="page-item disabled">
+                    <a class="page-link" href="#">Nouveaux &rarr;</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
 
 
