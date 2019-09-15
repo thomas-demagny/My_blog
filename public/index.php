@@ -1,7 +1,7 @@
 <?php
 
 
-use Controller\FrontController;
+use Controller\Router;
 use Tracy\Debugger;
 
 
@@ -13,6 +13,6 @@ if (session_status() == PHP_SESSION_NONE) {
 
 Debugger::enable();
 
-$frontController = new FrontController();
-$frontController->run();
+$router = new Router();
+$router->run();
 

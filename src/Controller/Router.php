@@ -9,10 +9,10 @@ use Twig\Loader\FilesystemLoader;
 
 
 /**
- * Class FrontController
+ * Class Router
  * @package Controller
  */
-class FrontController extends Controller
+class Router extends Controller
 {
     /**
      *
@@ -43,7 +43,7 @@ class FrontController extends Controller
 
 
     /**
-     * FrontController constructor.
+     * Router constructor.
      */
     public function __construct()
     {
