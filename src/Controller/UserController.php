@@ -25,7 +25,7 @@ class UserController extends Controller
     public function indexAction()
     {
 
-        return $this->render('connexion.twig');
+        return $this->render('connexion.html.twig');
     }
 
     /**
@@ -50,7 +50,7 @@ class UserController extends Controller
         if ($userManager->controlUser($info['username'], $info['email'])) {
             $this->alert("Un pseudo et/ou une adresse mail existe déjà, merci de vous connecter");
 
-            return $this->render('connexion.twig', compact('info'));
+            return $this->render('connexion.html.twig', compact('info'));
 
 
         }
@@ -60,17 +60,15 @@ class UserController extends Controller
                 $info['password'] = password_hash($info['password'], PASSWORD_BCRYPT);
                 $userManager->insertUser($info);
                 $this->alert("Merci vous êtes bien inscrit");
-                return $this->render('home.twig');
+                return $this->render('home.html.twig');
             }
             $this->alert("Vos deux mots de passe doivent être identique");
-            return $this->render('connexion.twig', compact('info'));
+            return $this->render('connexion.html.twig', compact('info'));
 
         }
-        return $this->render('connexion.twig');
+        return $this->render('connexion.html.twig');
 
     }
-
-
     /**
      * @return string
      * @throws LoaderError
@@ -85,32 +83,47 @@ class UserController extends Controller
 //on vérifie que username et password ne soient pas vide
         if (!empty($username) and !empty($password)) {
             $userManager = new UserManager();
-            $this->alert("ca bloque !");
+
 
 //Vérifie que l’utilisateur existe avec le username
             $user = $userManager->verifyUser($username);
-                //Ensuite on récupère ses données
-                if ($user !== false) {
-                    $user = $userManager->find($username);
-                    //Et on vérifie le password
-                    $this->alert("ca bloque pas !");
-                    if (password_verify($password, $user['password']) === true) {
-                        $this->session->create($user['id'], $user['username'], $user['email']);
+            //Ensuite on récupère ses données
+            if ($user !== false) {
+                $user = $userManager->find($username);
+                //Et on vérifie le password
 
-                        $this->alert("Bienvenue chez Tom's Blog !");
-                        return $this->render('home.twig', array('session' => filter_var_array($_SESSION)));
+                if (password_verify($password, $user['password']) === true) {
+                    $this->session->create($user['id'], $user['username'], $user['email'], $user['role']);
+                    $this->alert("Bienvenue $username !");
 
-                    }
+                    return $this->render('home.html.twig', array('session' => filter_var_array($_SESSION)));
+
                 }
             }
-
-
-            $this->alert('Pseudo ou mot de passe incorrect !');
-            return $this->render('portfolio.twig');
         }
+        $this->alert('Pseudo ou mot de passe incorrect !');
+        return $this->render('connexion.html.twig');
+    }
+
+    /**
+     * @return string
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
+     */
+    public function logoutAction()
+    {
+        if ($this->session->isLogged()) {
+            $this->session->destroy();
+        }
+        return $this->render('home.html.twig', array('session' => filter_var_array($_SESSION)));
+    }
+
 
 
 }
+
+
 
 
 

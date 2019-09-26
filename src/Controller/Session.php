@@ -38,12 +38,13 @@ class Session
      * @param $username
      * @param $email
      */
-    public function create($id, $username, $email)
+    public function create($id, $username, $email, $role)
     {
         $_SESSION['user'] = [
             'id' => $id,
             'username' => $username,
-            'email' => $email
+            'email' => $email,
+            'role' => $role
         ];
     }
 
@@ -68,13 +69,6 @@ class Session
         }return false;
     }
 
-    /**
-     * @return mixed
-     */
-    public function findSession()
-    {
-        return $this->session;
-    }
 
     /**
      * @return |null
