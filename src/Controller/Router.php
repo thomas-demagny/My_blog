@@ -6,7 +6,7 @@ namespace Controller;
 
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
-
+use Twig\Extension\DebugExtension;
 
 /**
  * Class Router
@@ -65,6 +65,7 @@ class Router extends Controller
             'debug' => true
 
         ));
+        $this->twig->addExtension(new \Twig\Extension\DebugExtension());
         $this->twig->addGlobal('session', filter_var_array($_SESSION));
 
     }

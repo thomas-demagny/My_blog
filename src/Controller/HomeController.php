@@ -19,7 +19,7 @@ namespace Controller;
          */
         public function indexAction()
     {
-        return $this->render('home.twig');
+        return $this->render('home.html.twig');
 
     }
 
@@ -32,7 +32,26 @@ namespace Controller;
          */
         public function portfolioAction()
         {
-            return $this->render('portfolio.twig');
+            return $this->render('portfolio.html.twig');
         }
+
+        /**
+         *
+         */
+        public function mailAction()
+        {
+            $message = "Line1/r/n/Line2/r/n/Line3";
+            $message = wordwrap($message, 150, "\r\n");
+            $to      = 'personne@example.com';
+            $from   =
+            $subject = 'le sujet';
+            $message = 'Bonjour !';
+            $headers = 'From: webmaster@example.com' . "\r\n" .
+                'Reply-To: webmaster@example.com' . "\r\n" .
+                'X-Mailer: PHP/' . phpversion();
+
+            mail($to, $subject, $message, $headers);
+        }
+
 
 }

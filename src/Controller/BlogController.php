@@ -26,7 +26,7 @@ class BlogController extends Controller
     public function indexAction()
     {
         $articles = (new ArticleManager)->findAll();
-        return $this->render('blog.twig', compact('articles'));
+        return $this->render('blog.html.twig', compact('articles'));
     }
 
 
@@ -51,15 +51,12 @@ class BlogController extends Controller
             $comments = $commentManager->findAll($articles_id);
             $ArticleManager = new ArticleManager();
             $articles = $ArticleManager->find($articles_id);
-            return $this->render('article.twig', compact('author', 'content', 'articles_id', 'uid', 'articles', 'comments'));
+            return $this->render('article.html.twig', compact('author', 'content', 'articles_id', 'uid', 'articles', 'comments'));
         }
-        return $this->render('article.twig', compact('author', 'content', 'articles_id', 'uid'));
+        return $this->render('article.html.twig', compact('author', 'content', 'articles_id', 'uid'));
 
 
-        }
-
-
-
+    }
 
     /**
      * @return string
@@ -73,10 +70,13 @@ class BlogController extends Controller
         $articles = (new ArticleManager)->find($dataId);
         $comments = (new CommentManager)->findAll($dataId);
 
-        return $this->render('article.twig', compact('articles', 'comments'));
+        return $this->render('article.html.twig', compact('articles', 'comments'));
     }
 
 }
+
+
+
 
 
 
