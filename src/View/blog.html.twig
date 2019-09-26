@@ -13,13 +13,13 @@
             <!-- Blog Post -->
             {% for articles in articles %}
             <div class="card mb-4">
-                <img class="card-img-top" src="{{ articles.imageLink }}" alt="image de mon blog">
+                <!--TODO<img class="card-img-top" src="{{ articles.imageLink }}" alt="image de mon blog"> -->
                 <div class="card-body text-md-left">
                     <a href="../public/?id={{ articles.id }}&access=blog!read">
 
                         <h2 class="card-title">{{ articles.title }}</h2>
                     </a>
-                    <h3 class="lead">{{ articles.subtitle }}</h3>
+                    <h3 class="lead">{{ articles.chapo }}</h3>
                     <article class="card-text">{{ articles.content }}</article>
                 </div>
                 <div class="card-footer text-muted text-md-left">

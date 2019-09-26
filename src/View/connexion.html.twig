@@ -33,16 +33,10 @@
                                 <input type="password" name="password" id="password" class="form-control"
                                        placeholder="***********" required>
                             </div>
+
                             <div>
-                                <div class="row">
-                                    <div class="col">
-                                        <label><input type="checkbox" name="condition" id="condition"> Se souvenir de
-                                            moi.</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <input type="submit" name="submit" value="Se connecter" class="btn btn-secondary col-4">
+                                <input type="submit" name="submit" value="Connexion"
+                                       class="btn btn-secondary col-4 mt-4">
                             </div>
                         </form>
                     </div>
@@ -66,8 +60,10 @@
                                 <div class="text-danger"><em>Il vous servira pour vous connecter par la suite !</em>
                                 </div>
                                 <div class="form-group">
-                                    <label class="font-weight-bold" for="signup_password">Mot de passe <span class="text-danger">*</span></label>
-                                    <input class="form-control" type="password" name="signup_password" id="signup_password" oninput="verify()"
+                                    <label class="font-weight-bold" for="signup_password">Mot de passe <span
+                                                class="text-danger">*</span></label>
+                                    <input class="form-control" type="password" name="signup_password"
+                                           id="signup_password" oninput="modules()"
                                            placeholder="***********" required>
                                 </div>
                                 <div class="form-group">
@@ -75,7 +71,7 @@
                                         passe<span
                                                 class="text-danger">*</span></label>
                                     <input type="password" name="confirmpassword" id="confirmpassword"
-                                           oninput="verify()" class="form-control" placeholder="***********" required>
+                                           oninput="modules()" class="form-control" placeholder="***********" required>
                                     <label id="msg"></label>
                                 </div>
                                 <h3>Vos données personnelles</h3>

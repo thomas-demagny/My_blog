@@ -19,11 +19,29 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../public/index.php?access=home!portfolio">Portfolio</a>
                 </li>
-                <li class="form-inline mr-sm-2">
-                    <button class="btn btn-secondary my-2 my-sm-0" type="submit"><a
-                                href="../public/index.php?access=user!connexion">Connexion</a></button>
-                </li>
+
+                {% if session.user.role is defined and session.user.role is same as('admin') %}
+                    {{ dump(session.user.role) }}
+                    <li class="nav-item">
+                        <a class="nav-link" href="../public/index.php?access=admin">Admin</a>
+                    </li>
+                {% endif %}
+                {% if session.user.username is not defined %}
+                    <li class="form-inline mr-sm-2">
+                        <a class="btn btn-secondary my-2 my-sm-0" type="submit"
+                           href="../public/index.php?access=user!connexion">Connexion</a>
+                    </li>
+                {% else %}
+                    <li class="form-inline mr-sm-2">
+                        <a class="btn btn-secondary my-2 my-sm-0" type="submit"
+                           href="../public/index.php?access=user!logout"
+                           onclick="return window.confirm('Êtes vous sur de vouloir vous déconnecter ?!')">Déconnexion</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>
 </div>
+
+
+
