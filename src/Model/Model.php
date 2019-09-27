@@ -2,37 +2,66 @@
 
 namespace Model;
 
-use PDO;
 
 /**
  * Class Model
+ * @package Model
  */
 abstract class Model
 
 {
 
+
     /**
-     * @var null
+     * @var \PDO
      */
-    static protected $pdo = null;
+    protected $pdo;
+    protected $table;
 
 
     /**
-     * @return PDO|null
+     * Model constructor.
      */
-    public function getPDO()
+    public function __construct()
     {
-        require_once '../config/dbconfig.php'; //TODO modifier les ../ si non valide.
-
-        if ((self::$pdo) === null) {
-            self::$pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8', DB_USER, DB_PASS);
-            self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
-        }
-
-        return self::$pdo;
-
+        $this->pdo = Database::getPDO();
     }
 
+    /**
+     * @return array
+     */
+    public function findAll()
+    {
+
+        $result = $this->pdo->prepare('SELECT * FROM ' . $this->table);
+        $result->execute();
+        return $result->fetchAll();
+    }
+
+    /**
+     * @param string $key
+     * @return mixed
+     */
+    public function find(string $key)
+    {
+
+        $result = $this->pdo->prepare('SELECT * FROM ' . $this->table . ' WHERE ' . $key . ' = ?');
+        $result->execute(array($key));
+        return $result->fetchObject();
+    }
+
+    /**
+     * @param string $author
+     * @param $content
+     * @param $dte
+     * @param $articles_id
+     * @param $uid
+     */
+    public function insert(string $author, string $content, string $dte,  int $articles_id, int $uid)
+    {
+        $key = implode(",", array_keys($data));
+        $values = implode('","', $data);
+        $req = $this->pdo->prepare('INSERT INTO ' . $this->table . "(' . $key . ') VALUES ("' . $values . '")');
+        $req->execute(array($author, $content, $dte, $articles_id, $uid));
+    }
 }
