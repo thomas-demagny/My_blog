@@ -51,17 +51,15 @@ abstract class Model
     }
 
     /**
-     * @param string $author
-     * @param $content
-     * @param $dte
-     * @param $articles_id
-     * @param $uid
+     * @param array $data
      */
-    public function insert(string $author, string $content, string $dte,  int $articles_id, int $uid)
+    public function insert(array $data)
     {
+
+
         $key = implode(",", array_keys($data));
         $values = implode('","', $data);
-        $req = $this->pdo->prepare('INSERT INTO ' . $this->table . "(' . $key . ') VALUES ("' . $values . '")');
-        $req->execute(array($author, $content, $dte, $articles_id, $uid));
+        $req = $this->pdo->prepare('INSERT INTO ' . $this->table . ' (' . $key . ') VALUES ("' . $values . '")');
+        $req->execute(array($data));
     }
 }
