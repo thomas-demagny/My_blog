@@ -50,7 +50,7 @@ class BlogController extends Controller
 
             $commentManager = new CommentManager;
             $commentManager->insert($author,$content,$articles_id,$uid);
-            //on recupère l'article et le commentaire
+            //on recupère l'article avec les commentaires
             $comments = $commentManager->findAll($articles_id);
 
             $ArticleManager = new ArticleManager;

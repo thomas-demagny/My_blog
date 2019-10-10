@@ -21,7 +21,6 @@
                 </li>
 
                 {% if session.user.role is defined and session.user.role is same as('admin') %}
-                    {{ dump(session.user.role) }}
                     <li class="nav-item">
                         <a class="nav-link" href="../public/index.php?access=admin">Admin</a>
                     </li>
@@ -42,6 +41,7 @@
         </div>
     </div>
 </div>
+
 
 
 

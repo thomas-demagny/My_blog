@@ -1,101 +1,61 @@
 {% extends 'layout/layout.html.twig' %}
 
-{% block content%}
-<ul class="nav nav-tabs text-center" id="adminTab" role="tablist">
-    <li class="nav-item">
-        <a class="nav-link active" id="gestart-tab" data-toggle="tab" href="#gestart" role="tab" aria-controls="gestart" aria-selected="true">Gestion des articles</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="create-tab" data-toggle="tab" href="#create" role="tab" aria-controls="create" aria-selected="false">Création d'article</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="comments-tab" data-toggle="tab" href="#comments" role="tab" aria-controls="comments" aria-selected="false">Gestion des commentaires</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="user-tab" data-toggle="tab" href="#user" role="tab" aria-controls="user" aria-selected="false">Gestion des utilisateurs</a>
-    </li>
-</ul>
-<div class="tab-content" id="adminTabContent">
-    <div class="tab-pane fade show active mb-5" id="gestart" role="tabpanel" aria-labelledby="gestart-tab">
-        {% for articles in articles %}
-            <div class="card mb-4">
+{% block content %}
+    <nav class="admin col-12" xmlns="http://www.w3.org/1999/html">
+    <ul class="nav nav-tabs" id="adminTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="gestart-tab" data-toggle="tab" href="#gestart" role="tab"
+               aria-controls="gestart" aria-selected="true">Gestion des articles</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="create-tab" data-toggle="tab" href="#create" role="tab" aria-controls="create"
+               aria-selected="true">Création d'article</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="comments-tab" data-toggle="tab" href="#comments" role="tab" aria-controls="comments"
+               aria-selected="true">Gestion des commentaires</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="user-tab" data-toggle="tab" href="#user" role="tab" aria-controls="user"
+               aria-selected="false">Gestion des utilisateurs</a>
+        </li>
+    </ul>
+    <div class="tab-content text-center mt-5" id="adminTabContent">
+        <div class="tab-pane fade show active mb-5" id="gestart" role="tabpanel" aria-labelledby="gestart-tab">
+            <p>page de gestion des articles</p>
 
-                <div class="card-body text-md-left">
-                    <a href="../public/?id={{ articles.id }}&access=admin">
 
-                        <h2 class="card-title">{{ articles.title }}</h2>
-                    </a>
-                    <h3 class="lead">{{ articles.chapo }}</h3>
-                    <article class="card-text">{{ articles.content }}</article>
+        </div>
+
+
+        <div class="tab-pane fade" id="create" role="tabpanel" aria-labelledby="create-tab">
+            <div class=" my-4">
+                <h5 class="card-header">Nouvel article</h5>
+                <div class="card-body">
+                    <form method="post" action="../public/?id={{ articles.id }}&access=admin">
+                        <label for="create" class="form-group">
+                            <input>Entrer le titre
+                       <input>Entrer le chapo
+                            <textarea name="create" class="form-control" rows="3" cols="150"></textarea>
+                        </label>
+
+
+                    </form>
                 </div>
-                <div class="card-footer text-muted text-md-left">
-                    Edité le {{ articles.dte | date ('d-m-Y à H:i') }} par {{ articles.author }} .
-                </div>
+
+
+
             </div>
-        {% endfor %}
-    <div class="tab-pane fade" id="create" role="tabpanel" aria-labelledby="create-tab">
-        <!-- Page Content -->
-        <div class="container">
-            <div class="row">
-                <!-- Post Content Column -->
-                <div class="col-lg-8">
+        </div>
 
-                    <!-- Title -->
-                    <h1 class="mt-4">{{ articles.title }}</h1>
+        <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="comments-tab">
+            <p>Je la page de gestion des commentaires</p>
+        </div>
 
-                    <!-- Author -->
-                    <p class="lead">
-                        par {{ articles.author }}
-
-                    </p>
-
-                    <hr>
-
-                    <!-- Date/Time -->
-                    <p>Ecrit le {{ articles.dte | date ('d-m-Y à H : i') }}</p>
-                    <p>Modifié le {{ articles.mod_dte | date ('d-m-Y') }}</p>
-
-
-
-                    <!-- Preview Image -->
-                    <!--<img class="img-fluid rounded" src="{{ articles.imageLink }}" alt="">-->
-
-                    <hr>
-
-                    <!-- Post Content -->
-
-                    <article class="lead">{{ articles.chapo }}</article>
-
-                    <p>{{ articles.content }}</p>
-
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
-                </div>
-            </div>
+        <div class="tab-pane fade" id="user" role="tabpanel" aria-labelledby="user-tab">
+            <p>Page de gestion des users</p>
         </div>
     </div>
-    <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="comments-tab">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At commodi corporis doloremque est eum eveniet facere impedit ipsum labore laudantium nisi nobis omnis possimus quas qui, quia repellat sapiente, tempora
-        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aspernatur debitis dignissimos dolores
-            enim id iusto mollitia nesciunt numquam optio, pariatur, possimus qui, quibusdam ratione saepe sed
-            temporibus totam voluptate.
-        </div>
-        <div>Asperiores eligendi eos libero quae sint sunt. Architecto debitis delectus dolores praesentium sequi
-            veritatis. Animi, aspernatur assumenda autem dolorem ducimus earum enim error iste maxime, mollitia quisquam
-            sequi? Aliquid, itaque.
-        </div></div>
-    <div class="tab-pane fade" id="user" role="tabpanel" aria-labelledby="user-tab">
-        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aspernatur cupiditate dolores est ex,
-            excepturi, incidunt ipsum itaque iusto laudantium nostrum officia, omnis praesentium quas quis saepe sit
-            sunt. Accusantium.
-        </div>
-        <div>Enim id magni natus neque provident, quae quibusdam tempore! Amet autem cum ducimus eos eveniet ex facere
-            illum itaque labore magni maiores modi molestiae molestias, non nostrum officiis quisquam rem!
-        </div>
-        <div>A amet assumenda atque autem cupiditate deserunt doloremque earum, ex facere, hic impedit in incidunt iure
-            magni neque sit vel! Eaque expedita iusto maiores molestiae porro possimus quam sapiente vero?
-        </div></div>
-</div>
+
 
 {% endblock %}

@@ -5,6 +5,7 @@ namespace Controller;
 
 
 use Model\UserManager;
+
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
@@ -28,6 +29,7 @@ class UserController extends Controller
         return $this->render('connexion.html.twig');
     }
 
+
     /**
      * @return string
      * @throws LoaderError
@@ -44,13 +46,15 @@ class UserController extends Controller
         $info['email'] = filter_input(INPUT_POST, 'signup_email', FILTER_SANITIZE_SPECIAL_CHARS);
 
 
+
+
         $userManager = new UserManager();
 
 
         if ($userManager->controlUser($info['username'], $info['email'])) {
             $this->alert("Un pseudo et/ou une adresse mail existe déjà, merci de vous connecter");
 
-            return $this->render('connexion.html.twig', compact('info'));
+            return $this->render('connexion.html.twig', array($info));
 
 
         }
@@ -58,6 +62,7 @@ class UserController extends Controller
         if (!empty($info['firstname']) AND !empty($info['surname']) AND !empty($info['password']) AND !empty($info['confirmpassword'])) {
             if ($info['password'] == $info['confirmpassword']) {
                 $info['password'] = password_hash($info['password'], PASSWORD_BCRYPT);
+
                 $userManager->insertUser($info);
                 $this->alert("Merci vous êtes bien inscrit");
                 return $this->render('home.html.twig');
@@ -89,9 +94,10 @@ class UserController extends Controller
             $user = $userManager->verifyUser($username);
             //Ensuite on récupère ses données
             if ($user !== false) {
+
                 $user = $userManager->find($username);
                 //Et on vérifie le password
-
+                {{ dump ($username); }}
                 if (password_verify($password, $user['password']) === true) {
                     $this->session->create($user['id'], $user['username'], $user['email'], $user['role']);
                     $this->alert("Bienvenue $username !");

@@ -78,6 +78,18 @@ class UserManager extends Model
         return false;
     }
 
+    /**
+     * @param $info
+     * @return bool
+     */
+    public function update($info)
+    {
+
+        $req = $this->pdo->prepare('UPDATE articles SET title = ?, author = ?, chapo = ? , content = ? , dte = NOW() WHERE id =  ? ');
+        $req->execute(array($info['title'], $info['author'], $info['chapo'], $info['content'], $info['artid']));
+        return true;
+    }
+
 
     /**
      * @param string $username

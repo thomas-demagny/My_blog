@@ -28,18 +28,26 @@ class AdminController extends Controller
      * @throws RuntimeError
      * @throws SyntaxError
      */
-    public function indexAction()
+    public function adminAction()
     {
-
+        $dataId = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
         if ($this->session->getUser('role') === 'admin') {
 
 
-            $articles = (new ArticleManager())->findAll;
-            $comments = (new CommentManager())->findAll;
-            $user = (new UserManager())->findAll;
+            $articles = new ArticleManager();
+            $articles->findAll();
+            //$comments = new CommentManager();
+            //$comments->findAll();
+
+            //faire boucle for articles pour afficher tous les commentaires de chaques articles.
+            $user = new UserManager();
+            $user->findAll();
             return $this->render('admin/admin_home.html.twig', compact('articles', 'comments', 'user'));
         }
         return $this->render('connexion.html.twig');
+
+
+
 
 
     }

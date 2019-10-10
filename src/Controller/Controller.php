@@ -4,6 +4,9 @@
 namespace Controller;
 
 use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 
 
 /**
@@ -34,9 +37,9 @@ abstract class Controller
      * @param string $view
      * @param array $var
      * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
      */
     public function render(string $view, array $var = [])
     {

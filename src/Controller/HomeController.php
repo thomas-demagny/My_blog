@@ -4,6 +4,10 @@
 namespace Controller;
 
 
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
+
 /**
  * Class HomeController
  * @package Controller
@@ -13,9 +17,9 @@ namespace Controller;
 
         /**
          * @return string
-         * @throws \Twig\Error\LoaderError
-         * @throws \Twig\Error\RuntimeError
-         * @throws \Twig\Error\SyntaxError
+         * @throws LoaderError
+         * @throws RuntimeError
+         * @throws SyntaxError
          */
         public function indexAction()
     {
@@ -26,9 +30,9 @@ namespace Controller;
 
         /**
          * @return string
-         * @throws \Twig\Error\LoaderError
-         * @throws \Twig\Error\RuntimeError
-         * @throws \Twig\Error\SyntaxError
+         * @throws LoaderError
+         * @throws RuntimeError
+         * @throws SyntaxError
          */
         public function portfolioAction()
         {
