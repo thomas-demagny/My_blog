@@ -3,6 +3,8 @@
 namespace Model;
 
 
+use PDO;
+
 /**
  * Class Model
  * @package Model
@@ -11,12 +13,15 @@ abstract class Model
 
 {
 
-
     /**
-     * @var \PDO
+     * @var PDO
      */
     protected $pdo;
-    protected $table;
+
+    /**
+     * @var
+     */
+//    protected $table;
 
 
     /**
@@ -28,38 +33,41 @@ abstract class Model
     }
 
     /**
+     * @param string $key
      * @return array
      */
-    public function findAll()
+ /*   public function findAll(int $dataId)
     {
 
         $result = $this->pdo->prepare('SELECT * FROM ' . $this->table);
-        $result->execute();
+        $result->execute($dataId);
         return $result->fetchAll();
-    }
+    }*/
+
 
     /**
-     * @param string $key
+     * @param int $key
      * @return mixed
      */
-    public function find(string $key)
+/*    public function find(int $key)
     {
+        $result = $this->pdo->prepare('SELECT * FROM ' . $this->table . ' WHERE  id = ? ');
 
-        $result = $this->pdo->prepare('SELECT * FROM ' . $this->table . ' WHERE ' . $key . ' = ?');
-        $result->execute(array($key));
+        $result->execute($key);
         return $result->fetchObject();
-    }
+    }*/
+
 
     /**
-     * @param array $data
+     * @param array $info
      */
-    public function insert(array $data)
+   /* public function insert(array $info)
     {
+        $key = implode(",", array_keys($info));
+        $values = implode('","', $info);
+        $result = $this->pdo->prepare('INSERT INTO ' . $this->table . ' (' . $key . ') VALUES ("' . $values . '")');
+        $result->execute(array($info));
+    }*/
 
 
-        $key = implode(",", array_keys($data));
-        $values = implode('","', $data);
-        $req = $this->pdo->prepare('INSERT INTO ' . $this->table . ' (' . $key . ') VALUES ("' . $values . '")');
-        $req->execute(array($data));
-    }
 }
