@@ -4,7 +4,7 @@
 namespace Model;
 
 
-
+use PDOStatement;
 
 /**
  * Class CommentManager
@@ -16,14 +16,14 @@ class CommentManager extends Model
 
 
     /**
-     * @param int $articlesID
+     * @param int $articlesId
      * @return array
      */
-    public function findAll(int $articlesID)
+    public function findAll(int $articlesId)
     {
 
         $result = $this->pdo->prepare("SELECT * FROM comments WHERE articles_id = ? ORDER BY id desc ");
-        $result->execute(array($articlesID));
+        $result->execute(array($articlesId));
         return $result->fetchAll();
     }
 
@@ -40,4 +40,33 @@ class CommentManager extends Model
         $result->execute(array($author, $content, $articles_id, $uid));
     }
 
+
+    /**
+     * @return array|bool|PDOStatement
+     */
+    public function notyetvalidated()
+    {
+        $result = $this->pdo->prepare('SELECT id, dte, content, user_id FROM comments WHERE statement = 0 ORDER BY dte');
+        $result->execute();
+        $result = $result->fetchAll();
+        return $result;
+    }
+
+    /**
+     * @param $commentId
+     */
+    public function published($commentId)
+    {
+        $result = $this->pdo->prepare("UPDATE comments SET statement = 1 WHERE id = ? ");
+        $result->execute(array($commentId));
+    }
+
+    /**
+     * @param $commentId
+     */
+    public function delete($commentId)
+    {
+        $result = $this->pdo->prepare('DELETE FROM comments WHERE id= ?');
+        $result->execute(array($commentId));
+    }
 }
