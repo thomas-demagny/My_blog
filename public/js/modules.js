@@ -12,9 +12,9 @@ function modules() {
 
 
 //switch tabs in admin
-    $('#adminTab a').on('click', function (admin) {
+    $(" #adminTab a ").on('click', function (admin) {
         admin.preventDefault();
-        $(this).tab('show')
+        $(this).tab('show');
     });
 
 
