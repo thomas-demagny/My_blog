@@ -52,51 +52,51 @@
 
                                 <h3>Vos données utilisateur</h3>
                                 <hr>
-                                <label class="font-weight-bold" for="signup_username">Pseudo <span
+                                <label class="font-weight-bold" for="signupUsername">Pseudo <span
                                             class="text-danger">*</span></label>
-                                <input class="form-control" type="text" name="signup_username" id="signup_username"
-                                       placeholder="Choississez votre pseudo" value="{{ info.username }}"
+                                <input class="form-control" type="text" name="signupUsername" id="signupUsername"
+                                       placeholder="Choisissez votre pseudo" value="{{ info.username }}"
                                        required>
                                 <div class="text-danger"><em>Il vous servira pour vous connecter par la suite !</em>
                                 </div>
                                 <div class="form-group">
-                                    <label class="font-weight-bold" for="signup_password">Mot de passe <span
+                                    <label class="font-weight-bold" for="signupPassword">Mot de passe <span
                                                 class="text-danger">*</span></label>
-                                    <input class="form-control" type="password" name="signup_password"
-                                           id="signup_password" oninput="modules()"
+                                    <input class="form-control" type="password" name="signupPassword"
+                                           id="signupPassword" oninput="modules()"
                                            placeholder="***********" required>
                                 </div>
                                 <div class="form-group">
-                                    <label class="font-weight-bold" for="confirmpassword">Confirmez votre mot de
+                                    <label class="font-weight-bold" for="confirmPassword">Confirmez votre mot de
                                         passe<span
                                                 class="text-danger">*</span></label>
-                                    <input type="password" name="confirmpassword" id="confirmpassword"
+                                    <input type="password" name="confirmPassword" id="confirmPassword"
                                            oninput="modules()" class="form-control" placeholder="***********" required>
                                     <label id="msg"></label>
                                 </div>
                                 <h3>Vos données personnelles</h3>
                                 <hr>
                                 <div class="form-group">
-                                    <label class="font-weight-bold" for="signup_surname">Nom <span
+                                    <label class="font-weight-bold" for="signupSurname">Nom <span
                                                 class="text-danger">*</span></label>
-                                    <input type="text" name="signup_surname" id="signup_surname" class="form-control"
+                                    <input type="text" name="signupSurname" id="signupSurname" class="form-control"
                                            placeholder="Votre nom" value="{{ info.surname }}" required>
                                 </div>
-                                <label class="font-weight-bold" for="signup_firstname">Prénom<span
+                                <label class="font-weight-bold" for="signupFirstname">Prénom<span
                                             class="text-danger">*</span></label>
-                                <input type="text" name="signup_firstname" id="signup_firstname" class="form-control"
+                                <input type="text" name="signupFirstname" id="signupFirstname" class="form-control"
                                        placeholder="Votre prénom" value="{{ info.firstname }}" required>
                             </div>
                             <div class="form-group">
                             </div>
                             <div class="form-group">
-                                <label class="font-weight-bold" for="signup_email">Email <span
+                                <label class="font-weight-bold" for="signupEmail">Email <span
                                             class="text-danger">*</span></label>
-                                <input type="email" name="signup_email" id="signup_email" class="form-control"
+                                <input type="email" name="signupEmail" id="signupEmail" class="form-control"
                                        placeholder="Entrez votre adresse mail" value="{{ info.email }}" required>
                             </div>
                             <div class="form-group">
-                                <input type="submit" name="signup_submit" value="S'enregistrer"
+                                <input type="submit" name="signupSubmit" value="S'enregistrer"
                                        class="btn btn-block btn-secondary col-4">
                             </div>
                             <p>Tous les champs indiqué d'un <span class="text-danger">*</span> sont obligatoires</p>
