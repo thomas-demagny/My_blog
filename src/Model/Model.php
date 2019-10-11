@@ -2,37 +2,72 @@
 
 namespace Model;
 
+
 use PDO;
 
 /**
  * Class Model
+ * @package Model
  */
 abstract class Model
 
 {
 
     /**
-     * @var null
+     * @var PDO
      */
-    static protected $pdo = null;
+    protected $pdo;
+
+    /**
+     * @var
+     */
+//    protected $table;
 
 
     /**
-     * @return PDO|null
+     * Model constructor.
      */
-    public function getPDO()
+    public function __construct()
     {
-        require_once '../config/dbconfig.php'; //TODO modifier les ../ si non valide.
-
-        if ((self::$pdo) === null) {
-            self::$pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8', DB_USER, DB_PASS);
-            self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
-        }
-
-        return self::$pdo;
-
+        $this->pdo = Database::getPDO();
     }
+
+    /**
+     * @param string $key
+     * @return array
+     */
+ /*   public function findAll(int $dataId)
+    {
+
+        $result = $this->pdo->prepare('SELECT * FROM ' . $this->table);
+        $result->execute($dataId);
+        return $result->fetchAll();
+    }*/
+
+
+    /**
+     * @param int $key
+     * @return mixed
+     */
+/*    public function find(int $key)
+    {
+        $result = $this->pdo->prepare('SELECT * FROM ' . $this->table . ' WHERE  id = ? ');
+
+        $result->execute($key);
+        return $result->fetchObject();
+    }*/
+
+
+    /**
+     * @param array $info
+     */
+   /* public function insert(array $info)
+    {
+        $key = implode(",", array_keys($info));
+        $values = implode('","', $info);
+        $result = $this->pdo->prepare('INSERT INTO ' . $this->table . ' (' . $key . ') VALUES ("' . $values . '")');
+        $result->execute(array($info));
+    }*/
+
 
 }

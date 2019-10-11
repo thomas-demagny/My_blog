@@ -1,0 +1,114 @@
+{% extends 'layout/layout.html.twig' %}
+
+{% block title %}Inscription/Connexion{% endblock %}
+{% block content %}
+    <div class="signin_page container mt-2 mb-4">
+        <div class="col-sm-8 ml-auto mr-auto">
+            <ul class="nav nav-pills nav-fill mb-1" id="pills-tab" role="tablist">
+                <li class="nav-item"><a class="nav-link {% if info is not defined %}active{% endif %}"
+                                        id="pills-signin-tab" data-toggle="pill" href="#pills-signin" role="tab"
+                                        aria-controls="pills-signin"
+                                        aria-selected="{% if info is not defined %}true{% else %}false{% endif %}">Se
+                        connecter</a></li>
+                <li class="nav-item"><a class="nav-link {% if info is defined %}active{% endif %}" id="pills-signup-tab"
+                                        data-toggle="pill" href="#pills-signup" role="tab" aria-controls="pills-signup"
+                                        aria-selected="{% if info is defined %}true{% else %}false{% endif %}">S'enregistrer</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade {% if info is not defined %}show active{% endif %}" id="pills-signin"
+                     role="tabpanel" aria-labelledby="pills-signin-tab">
+                    <div class="col-sm-12 border border-primary shadow rounded pt-2">
+
+                        <form class="form-group" method="POST" name="signin_Form" enctype="multipart/form-data"
+                              action="../public/?access=user!log">
+                            <div class="form-group">
+                                <label class="font-weight-bold" for="username">Pseudo <span class="text-danger">*</span></label>
+                                <input type="text" name="username" id="username" class="form-control"
+                                       placeholder="ex: Super user" value="{{ info.username }}" required>
+                            </div>
+                            <div>
+                                <label class="font-weight-bold" for="password">Mot de passe <span
+                                            class="text-danger">*</span></label>
+                                <input type="password" name="password" id="password" class="form-control"
+                                       placeholder="***********" required>
+                            </div>
+
+                            <div>
+                                <input type="submit" name="submit" value="Connexion"
+                                       class="btn btn-secondary col-4 mt-4">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="tab-pane fade {% if info is defined %}show active{% endif %}" id="pills-signup"
+                     role="tabpanel" aria-labelledby="pills-signup-tab">
+                    <div class="col-sm-12 border border-primary shadow rounded pt-4">
+                        <div class="text-center"><img src="../public/images/Creative-Tail-Animal-panda.svg.png"
+                                                      class="rounded-circle border p-1" alt="un panda"></div>
+                        <form method="POST" id="signup_Form" enctype="multipart/form-data"
+                              action="../public/?access=user!register">
+                            <div class="form-group">
+
+                                <h3>Vos données utilisateur</h3>
+                                <hr>
+                                <label class="font-weight-bold" for="signupUsername">Pseudo <span
+                                            class="text-danger">*</span></label>
+                                <input class="form-control" type="text" name="signupUsername" id="signupUsername"
+                                       placeholder="Choisissez votre pseudo" value="{{ info.username }}"
+                                       required>
+                                <div class="text-danger"><em>Il vous servira pour vous connecter par la suite !</em>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="signupPassword">Mot de passe <span
+                                                class="text-danger">*</span></label>
+                                    <input class="form-control" type="password" name="signupPassword"
+                                           id="signupPassword" oninput="modules()"
+                                           placeholder="***********" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="confirmPassword">Confirmez votre mot de
+                                        passe<span
+                                                class="text-danger">*</span></label>
+                                    <input type="password" name="confirmPassword" id="confirmPassword"
+                                           oninput="modules()" class="form-control" placeholder="***********" required>
+                                    <label id="msg"></label>
+                                </div>
+                                <h3>Vos données personnelles</h3>
+                                <hr>
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="signupSurname">Nom <span
+                                                class="text-danger">*</span></label>
+                                    <input type="text" name="signupSurname" id="signupSurname" class="form-control"
+                                           placeholder="Votre nom" value="{{ info.surname }}" required>
+                                </div>
+                                <label class="font-weight-bold" for="signupFirstname">Prénom<span
+                                            class="text-danger">*</span></label>
+                                <input type="text" name="signupFirstname" id="signupFirstname" class="form-control"
+                                       placeholder="Votre prénom" value="{{ info.firstname }}" required>
+                            </div>
+                            <div class="form-group">
+                            </div>
+                            <div class="form-group">
+                                <label class="font-weight-bold" for="signupEmail">Email <span
+                                            class="text-danger">*</span></label>
+                                <input type="email" name="signupEmail" id="signupEmail" class="form-control"
+                                       placeholder="Entrez votre adresse mail" value="{{ info.email }}" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" name="signupSubmit" value="S'enregistrer"
+                                       class="btn btn-block btn-secondary col-4">
+                            </div>
+                            <p>Tous les champs indiqué d'un <span class="text-danger">*</span> sont obligatoires</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+

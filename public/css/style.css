@@ -4,7 +4,7 @@
 
 body {
     font-family: 'News Cycle', sans-serif;
-    background: radial-gradient(closest-side ellipse at center, grey, navajowhite);
+    background-color: navajowhite;
 }
 
 .content {
@@ -100,7 +100,8 @@ address,
 .blog_page,
 .article_page,
 .signin_page {
-    padding-top: 56px;
+    padding-top: 9.75rem;
+    line-height: 0.15;
 }
 
 
@@ -174,7 +175,7 @@ address,
 }
 
 .portfolio_page li .button:before {
-    content : '';
+    content: '';
     position: absolute;
     height: 100%;
     width: 120%;
@@ -220,7 +221,6 @@ address,
 
 .portfolio_page li:after {
     content: '';
-    position: absolute;
     width: 40%;
     height: 100%;
     left: 0;
@@ -228,9 +228,10 @@ address,
     background: rgba(255, 255, 255, 0.02);
 }
 
+
 /* end Porfolio */
 
-/* signin register pages */
+/* admin pages */
 
 
 footer {

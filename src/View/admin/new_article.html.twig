@@ -1,0 +1,39 @@
+{% extends 'layout_admin/layout.html.twig' %}
+
+{% block content%}
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+            <!-- Title -->
+            <h1 class="mt-4">{{ articles.title }}</h1>
+
+            <!-- Author -->
+            <p class="lead">
+                par {{ articles.author }}
+
+            </p>
+
+            <hr>
+
+            <!-- Date/Time -->
+            <p>Ecrit le {{ articles.dte | date ('d-m-Y à H : i') }}</p>
+            <p>Modifié le {{ articles.mod_dte | date ('d-m-Y') }}</p>
+
+
+
+            <!-- Preview Image -->
+            <!--<img class="img-fluid rounded" src="{{ articles.imageLink }}" alt="">-->
+
+            <hr>
+
+            <!-- Post Content -->
+
+            <article class="lead">{{ articles.subtitle }}</article>
+
+            <p>{{ articles.content }}</p>
+        </div>
+    </div>
+</div>

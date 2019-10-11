@@ -1,0 +1,61 @@
+{% extends 'layout/layout.html.twig' %}
+
+{% block content %}
+    <nav class="admin col-12" xmlns="http://www.w3.org/1999/html">
+    <ul class="nav nav-tabs" id="adminTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="gestart-tab" data-toggle="tab" href="#gestart" role="tab"
+               aria-controls="gestart" aria-selected="true">Gestion des articles</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="create-tab" data-toggle="tab" href="#create" role="tab" aria-controls="create"
+               aria-selected="true">Création d'article</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="comments-tab" data-toggle="tab" href="#comments" role="tab" aria-controls="comments"
+               aria-selected="true">Gestion des commentaires</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="user-tab" data-toggle="tab" href="#user" role="tab" aria-controls="user"
+               aria-selected="false">Gestion des utilisateurs</a>
+        </li>
+    </ul>
+    <div class="tab-content text-center mt-5" id="adminTabContent">
+        <div class="tab-pane fade show active mb-5" id="gestart" role="tabpanel" aria-labelledby="gestart-tab">
+            <p>page de gestion des articles</p>
+
+
+        </div>
+
+
+        <div class="tab-pane fade" id="create" role="tabpanel" aria-labelledby="create-tab">
+            <div class=" my-4">
+                <h5 class="card-header">Nouvel article</h5>
+                <div class="card-body">
+                    <form method="post" action="../public/?id={{ articles.id }}&access=admin">
+                        <label for="create" class="form-group">
+                            <input>Entrer le titre
+                       <input>Entrer le chapo
+                            <textarea name="create" class="form-control" rows="3" cols="150"></textarea>
+                        </label>
+
+
+                    </form>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="comments-tab">
+            <p>Je la page de gestion des commentaires</p>
+        </div>
+
+        <div class="tab-pane fade" id="user" role="tabpanel" aria-labelledby="user-tab">
+            <p>Page de gestion des users</p>
+        </div>
+    </div>
+
+
+{% endblock %}
