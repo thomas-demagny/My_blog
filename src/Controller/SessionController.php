@@ -5,15 +5,15 @@ namespace Controller;
 
 
 /**
- * Class Session
+ * Class SessionController
  * @package Controller
  */
-class Session
+class SessionController
 {
     /**
      * @var mixed
      */
-    private $session;
+    protected $session;
 
     /**
      * @var
@@ -37,11 +37,12 @@ class Session
      * @param $userid
      * @param $username
      * @param $email
+     * @param $role
      */
-    public function create($id, $username, $email, $role)
+    public function create($userid, $username, $email, $role)
     {
         $_SESSION['user'] = [
-            'id' => $id,
+            'id' => $userid,
             'username' => $username,
             'email' => $email,
             'role' => $role
@@ -71,6 +72,7 @@ class Session
 
 
     /**
+     * @param $var
      * @return |null
      */
     public function getUser($var)

@@ -38,12 +38,12 @@ class UserController extends Controller
      */
     public function registerAction()
     {
-        $info['username'] = filter_input(INPUT_POST, 'signup_username', FILTER_SANITIZE_SPECIAL_CHARS);
-        $info['password'] = filter_input(INPUT_POST, 'signup_password', FILTER_SANITIZE_STRING);
-        $info['confirmpassword'] = filter_input(INPUT_POST, 'confirmpassword', FILTER_SANITIZE_STRING);
-        $info['firstname'] = filter_input(INPUT_POST, 'signup_firstname', FILTER_SANITIZE_SPECIAL_CHARS);
-        $info['surname'] = strtoupper(filter_input(INPUT_POST, 'signup_surname', FILTER_SANITIZE_SPECIAL_CHARS));
-        $info['email'] = filter_input(INPUT_POST, 'signup_email', FILTER_SANITIZE_SPECIAL_CHARS);
+        $info['username'] = filter_input(INPUT_POST, 'signupUsername', FILTER_SANITIZE_SPECIAL_CHARS);
+        $info['password'] = filter_input(INPUT_POST, 'signupPassword', FILTER_SANITIZE_STRING);
+        $info['confirmPassword'] = filter_input(INPUT_POST, 'confirmPassword', FILTER_SANITIZE_STRING);
+        $info['firstname'] = filter_input(INPUT_POST, 'signupFirstname', FILTER_SANITIZE_SPECIAL_CHARS);
+        $info['surname'] = strtoupper(filter_input(INPUT_POST, 'signupSurname', FILTER_SANITIZE_SPECIAL_CHARS));
+        $info['email'] = filter_input(INPUT_POST, 'signupEmail', FILTER_SANITIZE_SPECIAL_CHARS);
 
 
 
@@ -59,8 +59,8 @@ class UserController extends Controller
 
         }
 
-        if (!empty($info['firstname']) AND !empty($info['surname']) AND !empty($info['password']) AND !empty($info['confirmpassword'])) {
-            if ($info['password'] == $info['confirmpassword']) {
+        if (!empty($info['firstname']) AND !empty($info['surname']) AND !empty($info['password']) AND !empty($info['confirmPassword'])) {
+            if ($info['password'] == $info['confirmPassword']) {
                 $info['password'] = password_hash($info['password'], PASSWORD_BCRYPT);
 
                 $userManager->insertUser($info);
@@ -97,7 +97,7 @@ class UserController extends Controller
 
                 $user = $userManager->find($username);
                 //Et on vérifie le password
-                {{ dump ($username); }}
+
                 if (password_verify($password, $user['password']) === true) {
                     $this->session->create($user['id'], $user['username'], $user['email'], $user['role']);
                     $this->alert("Bienvenue $username !");
@@ -122,7 +122,7 @@ class UserController extends Controller
         if ($this->session->isLogged()) {
             $this->session->destroy();
         }
-        return $this->render('home.html.twig', array('session' => filter_var_array($_SESSION)));
+        return $this->render('home.html.twig', array('session' => $this->session = filter_var_array($_SESSION)));
     }
 
 

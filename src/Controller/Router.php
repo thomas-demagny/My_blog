@@ -66,7 +66,7 @@ class Router extends Controller
             'debug' => true
 
         ));
-        $this->twig->addGlobal('session', filter_var_array($_SESSION));
+        $this->twig->addGlobal('session', $this->session = filter_var_array($_SESSION));
         $this->twig->addExtension(new \Twig\Extension\DebugExtension());
 
 

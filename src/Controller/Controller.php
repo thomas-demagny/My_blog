@@ -20,7 +20,11 @@ abstract class Controller
      */
     private $twig;
 
+    /**
+     * @var SessionController
+     */
     protected $session;
+
     /**
      * Controller constructor.
      * @param Environment $twig
@@ -28,7 +32,7 @@ abstract class Controller
     public function __construct(Environment $twig)
     {
         $this->twig = $twig;
-        $this->session =  new Session();
+        $this->session =  new SessionController();
 
     }
 
