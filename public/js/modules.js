@@ -1,7 +1,7 @@
 function modules() {
-    var signup_password = document.getElementById("signup_password").value;
-    var confirmpassword = document.getElementById("confirmpassword").value;
-    if (signup_password !== confirmpassword) {
+    var signupPassword = document.getElementById("signupPassword").value;
+    var confirmPassword = document.getElementById("confirmPassword").value;
+    if (signupPassword !== confirmPassword) {
         document.getElementById("msg").innerHTML = "Les deux mots de passe doivent être identiques";
         document.getElementById("msg").style.color = "red";
     } else {
