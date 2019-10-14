@@ -40,14 +40,14 @@
             <hr>
             <!-- Comments Form -->
             <div class="card my-4">
-                <h5 class="card-header">Laisser un commentaire:</h5>
+                <h5 class="card-header">Laissez un commentaire:</h5>
                 <div class="card-body">
-                    <form method="post" action="../public/?id={{ articles.id }}&access=blog!comment">
+                    <form method="post" action="../public/?id={{ articles.id }}&access=comment!comment">
                         <label for="comment" class="form-group">
                             <textarea name="comments" class="form-control" rows="3" cols="150"></textarea>
                         </label>
                         {%  if session.user.username is not defined %}
-                            <p>Vous devez être connecter pour commenter !</p>
+                            <p>Vous devez être connecté pour commenter !</p>
                             <button type="submit" class="btn alert"><a href="../public/index.php?access=user!connexion">Connexion</a></button>{% else %}
                         <button type="submit" class="btn btn-primary">Commenter</button>{% endif %}
                     </form>
