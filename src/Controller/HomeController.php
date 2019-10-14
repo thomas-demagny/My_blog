@@ -48,10 +48,10 @@ use Twig\Error\SyntaxError;
          */
         public function mailAction()
         {
-            $name = htmlentities(filter_input(INPUT_POST,'name'));
-            $mail = htmlentities(filter_input(INPUT_POST,'mail'));
-            $content = htmlentities(filter_input(INPUT_POST,'message'));
-            $from = "admin@oc.thomas-demagny.com";
+            $name = filter_input(INPUT_POST,'name');
+            $mail = filter_input(INPUT_POST,'mail');
+            $content = filter_input(INPUT_POST,'message');
+            $from = "tom10440@saumon.o2switch.net";
             $email = "demagny.t@gmail.com";
             $subject = 'message de ' .$name.' <'.$mail.'>';
             $message = $content;
@@ -59,7 +59,7 @@ use Twig\Error\SyntaxError;
             $header .= 'Content-type: text/html; charset=utf-8'."\r\n";
             $header .= 'From: '.$from."\r\n";
             mail($email,$subject,$message, $header);
-            $this->alert('Votre mail est bien envoyé.');
+            $this->alert('Votre mail à bien été envoyé.');
             return $this->render('home.html.twig');
         }
 

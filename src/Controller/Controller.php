@@ -3,6 +3,9 @@
 
 namespace Controller;
 
+use Model\ArticleManager;
+use Model\CommentManager;
+use Model\UserManager;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
