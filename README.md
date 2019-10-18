@@ -1,3 +1,4 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/8345600a2ba38aca04cb/maintainability)](https://codeclimate.com/github/thomas-demagny/My_blog/maintainability)
 # Project 5 Create our first PHP blog
 
 Background information
