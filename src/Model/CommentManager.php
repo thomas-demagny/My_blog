@@ -44,9 +44,9 @@ class CommentManager extends Model
     /**
      * @return array|bool|PDOStatement
      */
-    public function notyetvalidated()
+    public function notYetValidated()
     {
-        $result = $this->pdo->prepare('SELECT id, dte, content, user_id FROM comments WHERE statement = 0 ORDER BY dte');
+        $result = $this->pdo->prepare('SELECT id, author, dte, content, user_id FROM comments WHERE statement = 0 AND articles_id ORDER BY articles_id DESC ');
         $result->execute();
         $result = $result->fetchAll();
         return $result;

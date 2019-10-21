@@ -47,4 +47,15 @@ class CommentController extends Controller
 
     }
 
+    /**
+     *
+     */
+    public function notYetValidatedAction()
+    {
+
+        $commentManager = new CommentManager();
+        $commentManager->notYetValidated();
+
+
+    }
 }
