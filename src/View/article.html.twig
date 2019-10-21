@@ -53,16 +53,19 @@
                     </form>
                 </div>
             </div>
-            {% for comments in comments %}
+            {% for comment in comments %}
+
+                {% if published is defined %}
             <!-- Single Comment -->
             <div class="media mb-4">
                 <!--TODO insérer ou non-<img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="photo de l'utilisateur"> -->
                 <div class="media-body">
-                    <h5 class="mt-0"> de {{ comments.author }}</h5>
-                    <p> le {{ comments.dte | date ('d-m-Y à H : i') }} </p>
-                    <p class="comments"> {{ comments.content }}</p>
+                    <h5 class="mt-0"> de {{ comment.author }}</h5>
+                    <p> le {{ comment.dte | date ('d-m-Y à H : i') }} </p>
+                    <p class="comments"> {{ comment.content }}</p>
                 </div>
             </div>
+                {% endif %}
             {% endfor %}
         </div>
     </div>

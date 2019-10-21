@@ -11,19 +11,19 @@
 
             <h1 class="my-4 text-center">Les derniers articles</h1>
             <!-- Blog Post -->
-            {% for articles in articles %}
+            {% for article in articles %}
             <div class="card mb-4">
-                <!--TODO<img class="card-img-top" src="{{ articles.imageLink }}" alt="image de mon blog"> -->
+                <!--TODO<img class="card-img-top" src="{{ article.imageLink }}" alt="image de mon blog"> -->
                 <div class="card-body text-md-left">
-                    <a href="../public/?id={{ articles.id }}&access=article!read">
+                    <a href="../public/?id={{ article.id }}&access=article!read">
 
-                        <h2 class="card-title">{{ articles.title }}</h2>
+                        <h2 class="card-title">{{ article.title }}</h2>
                     </a>
-                    <h3 class="lead">{{ articles.chapo }}</h3>
-                    <article class="card-text">{{ articles.content }}</article>
+                    <h3 class="lead">{{ article.chapo }}</h3>
+
                 </div>
                 <div class="card-footer text-muted text-md-left">
-                    Edité le {{ articles.dte | date ('d-m-Y à H:i') }} par {{ articles.author }} .
+                    Edité le {{ article.dte | date ('d-m-Y à H:i') }} par {{ article.author }} .
                 </div>
             </div>
             {% endfor %}
