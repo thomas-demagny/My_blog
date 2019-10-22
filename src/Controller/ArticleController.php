@@ -99,6 +99,8 @@ class ArticleController extends Controller
         $articleManager = new ArticleManager();
         $articleManager->delete($dataId);
         $this->redirect('../public/index.php?access=admin');
+        $this->alert('Etes vous certain de vouloir supprimer cet article ?');
+
     }
 
 
