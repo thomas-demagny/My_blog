@@ -3,9 +3,7 @@
 
 namespace Controller;
 
-use Model\ArticleManager;
-use Model\CommentManager;
-use Model\UserManager;
+
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -52,6 +50,14 @@ abstract class Controller
     {
         extract($var);
         return $this->twig->render($view, $var);
+    }
+    /**
+     * @param $url
+     */
+    public function redirect($url)
+    {
+        $redirect = "<script>window.location = '$url'</script>";
+        echo filter_var($redirect);
     }
 
 
