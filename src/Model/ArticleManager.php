@@ -52,7 +52,7 @@ class ArticleManager extends Model
     public function update(array $info)
     {
         $result = $this->pdo->prepare('UPDATE articles SET title = ?, author = ?, chapo = ? , content = ? , dte = NOW() WHERE id =  ? ');
-        $result->execute(array($info['title'], $info['author'], $info['headline'], $info['content'], $info['id']));
+        $result->execute(array($info['title'], $info['author'], $info['chapo'], $info['content'], $info['id']));
         return $result;
     }
 
