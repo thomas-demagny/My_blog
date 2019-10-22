@@ -69,4 +69,13 @@ class CommentManager extends Model
         $result = $this->pdo->prepare('DELETE FROM comments WHERE id= ?');
         $result->execute(array($commentId));
     }
+
+    /**
+     * @param $dataId
+     */
+    public function deleteFromArticle($dataId)
+    {
+        $result = $this->pdo->prepare('DELETE FROM comments WHERE articles_id= ?');
+        $result->execute(array($dataId));
+    }
 }
