@@ -58,4 +58,17 @@ class CommentController extends Controller
 
 
     }
+
+    /**
+     * @return string
+     */
+    public function deleteAction()
+    {
+        $comment_id = filter_input(INPUT_GET,'id');
+        $commentManager = new CommentManager();
+        $commentManager->delete($comment_id);
+
+        $this->redirect('../public/index.php?access=admin');
+
+    }
 }
