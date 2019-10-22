@@ -16,7 +16,7 @@ use Twig\Extension\DebugExtension;
 class Router extends Controller
 {
     /**
-     *
+     *path par défaut à tous les controllers
      */
     const DEFAULT_PATH = 'Controller\\';
 
@@ -26,7 +26,7 @@ class Router extends Controller
     const DEFAULT_CONTROLLER = 'HomeController';
 
     /**
-     *
+     *Methode par default
      */
     const DEFAULT_ACTION = 'indexAction';
     /**
@@ -35,9 +35,11 @@ class Router extends Controller
     protected $twig = null;
     /**
      * @var string
+     * renvoi vers le Controlleur requis
      */
     protected $controller = self::DEFAULT_CONTROLLER;
     /**
+     * renvoi la méthode requise
      * @var string
      */
     protected $action = self::DEFAULT_ACTION;
@@ -45,6 +47,7 @@ class Router extends Controller
 
     /**
      * Router constructor.
+     * Analyse l'URL, définit le contrôleur et sa méthode
      */
     public function __construct()
     {
@@ -67,14 +70,14 @@ class Router extends Controller
 
         ));
         $this->twig->addGlobal('session', $this->session = filter_var_array($_SESSION));
-        $this->twig->addExtension(new \Twig\Extension\DebugExtension());
+        $this->twig->addExtension(new DebugExtension());
 
 
     }
 
 
     /**
-     *
+     *Analyse de l'url et va chercher le controller et sa méthode
      */
     public function parseUrl()
     {
@@ -89,7 +92,7 @@ class Router extends Controller
 
 
     /**
-     *
+     *Définit le controlleur demandé
      */
     public function setController()
     {
@@ -102,7 +105,7 @@ class Router extends Controller
 
 
     /**
-     *
+     *Définit la méthode demandé
      */
     public function setAction()
     {
@@ -114,7 +117,7 @@ class Router extends Controller
 
 
     /**
-     *
+     *pour créer l'objet du controller et appeler sa méthode
      */
     public function run()
     {
