@@ -1,61 +1,150 @@
 {% extends 'layout/layout.html.twig' %}
 
 {% block content %}
-    <nav class="admin col-12" xmlns="http://www.w3.org/1999/html">
-    <ul class="nav nav-tabs" id="adminTab" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link active" id="gestart-tab" data-toggle="tab" href="#gestart" role="tab"
-               aria-controls="gestart" aria-selected="true">Gestion des articles</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="create-tab" data-toggle="tab" href="#create" role="tab" aria-controls="create"
-               aria-selected="true">Création d'article</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="comments-tab" data-toggle="tab" href="#comments" role="tab" aria-controls="comments"
-               aria-selected="true">Gestion des commentaires</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="user-tab" data-toggle="tab" href="#user" role="tab" aria-controls="user"
-               aria-selected="false">Gestion des utilisateurs</a>
-        </li>
-    </ul>
-    <div class="tab-content text-center mt-5" id="adminTabContent">
-        <div class="tab-pane fade show active mb-5" id="gestart" role="tabpanel" aria-labelledby="gestart-tab">
-            <p>page de gestion des articles</p>
+    <nav class="admin col-12">
+        <ul class="nav nav-tabs" id="adminTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="gestart-tab" data-toggle="tab" href="#gestart" role="tab"
+                   aria-controls="gestart" aria-selected="true">Gestion des articles</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="create-tab" data-toggle="tab" href="#create" role="tab" aria-controls="create"
+                   aria-selected="true">Création d'article</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="comments-tab" data-toggle="tab" href="#comments" role="tab"
+                   aria-controls="comments"
+                   aria-selected="true">Gestion des commentaires</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="user-tab" data-toggle="tab" href="#user" role="tab" aria-controls="user"
+                   aria-selected="false">Gestion des utilisateurs</a>
+            </li>
+        </ul>
+        <div class="tab-content text-center mt-5" id="adminTabContent">
+            <div class="tab-pane fade show active mb-5" id="gestart" role="tabpanel" aria-labelledby="gestart-tab">
 
+                <!-- Articles List -->
+                <div class="offset-2 col-md-8 offset-2">
 
-        </div>
+                    <h5 class="my-4 text-center">Liste des articles</h5>
 
+                    {% for article in articles %}
+                    <div class="card mb-4">
 
-        <div class="tab-pane fade" id="create" role="tabpanel" aria-labelledby="create-tab">
-            <div class=" my-4">
-                <h5 class="card-header">Nouvel article</h5>
-                <div class="card-body">
-                    <form method="post" action="../public/?id={{ articles.id }}&access=admin">
-                        <label for="create" class="form-group">
-                            <input>Entrer le titre
-                       <input>Entrer le chapo
-                            <textarea name="create" class="form-control" rows="3" cols="150"></textarea>
-                        </label>
+                        <div class="card-body text-md-left">
+                            <h2 class="card-title"><a href="../public/?id={{ article.id }}">{{ article.title }}</a>
+                            </h2>
 
-
-                    </form>
+                            <h3 class="lead">{{ article.chapo }}</h3>
+                        </div>
+                        <div class="card-footer text-muted text-md-left">
+                            Edité le {{ article.dte | date ('d-m-Y à H:i') }} par {{ article.author }} .
+                        </div>
+                        <div class="form-group">
+                            <a class="btn btn-sm btn-dark col-1"
+                               href="../public/?id={{ article.id }}&access=article!updateLoad">Modifier</a>
+                            <a class="btn btn-sm btn-danger col-1"
+                               href="../public/?id={{ article.id }}&access=article!delete"
+                               onclick="return window.confirm('Êtes vous sûr de vouloir supprimer cet article ?!')">Supprimer</a>
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
-
-
-
             </div>
+
+
+
+
+            <!-- start create an article -->
+            <div class="tab-pane fade col-md-6 col-lg-6" id="create" role="tabpanel" aria-labelledby="create-tab"
+                 action="create">
+                <h2 class=" text-center mt-md-5">Nouvel article </h2>
+                <form method="post" action="../public/index.php?access=article!create">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Entrer le titre" id="title"
+                                       name="title"
+                                       data-validation-required-message="Ce champ est obligatoire !">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Entrer le châpo" id="chapo"
+                                       name="chapo"
+                                       data-validation-required-message="Ce champ est obligatoire !">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" name="create" rows="8" required
+                                  data-validation-required-message="Ce champ est obligatoire"
+                                  placeholder="Entrer le corps de l'article"></textarea>
+                    </div>
+                    <div class="form-group mt-3">
+                        <button type="submit" class="btn btn-secondary" id="submit">Envoyer</button>
+                    </div>
+                </form>
+            </div>
+            <!--end create -->
+
+            <!-- Comments part -->
+            <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="comments-tab" action="comments">
+                {% if published is not defined %}
+                    {% for comment in comments %}
+                        <p>posté par : {{ comment.author }}</p>
+                        <p>le : {{ comment.dte | date ('d-m-Y à H:i') }}</p>
+                        <p>{{ comment.content }}</p>
+                        <a class="btn btn-sm btn-outline-danger"
+                           href="../public/?id={{ comment.id }}&access=comment!delete">Supprimer</a>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <!-- end Comments part -->
+            <!-- Start User part -->
+            <div class="tab-pane fade" id="user" role="tabpanel" aria-labelledby="user-tab" action="user">
+                <p>Page de gestion des users</p>
+                <table class="text-center">
+                    <thead>
+                    <tr>
+                        <th>Nom d'utilisateur</th>
+                        <th>Email</th>
+                        <th>Rôle</th>
+                        <th>Date d'inscription</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in user | sort %}
+                        <tr>
+                            <td> {{ user.username }} </td>
+                            <td> {{ user.email }} </td>
+                            <td> {{ user.role }} </td>
+                            <td> {{ user.register_date }} </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- End User part -->
         </div>
-
-        <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="comments-tab">
-            <p>Je la page de gestion des commentaires</p>
-        </div>
-
-        <div class="tab-pane fade" id="user" role="tabpanel" aria-labelledby="user-tab">
-            <p>Page de gestion des users</p>
-        </div>
-    </div>
-
-
+    </nav>
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
