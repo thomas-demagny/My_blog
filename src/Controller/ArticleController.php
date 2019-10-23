@@ -55,7 +55,7 @@ class ArticleController extends Controller
     }
 
     /**
-     * @param array $info
+     * pour la création d'article
      */
     public function createAction()
     {
@@ -63,7 +63,6 @@ class ArticleController extends Controller
         $info['chapo'] = filter_input(INPUT_POST, 'chapo');
         $info['content'] = filter_input(INPUT_POST, 'create');
         $info['author'] = $this->session->getUser('username');
-
 
 
         $articleManager = new ArticleManager();
@@ -77,18 +76,37 @@ class ArticleController extends Controller
      * @throws RuntimeError
      * @throws SyntaxError
      */
-    public function updateAction()
-    {
-        $dataId = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-        $articlesManager = new ArticleManager();
-        $articles = $articlesManager->find($dataId);
-        //va chercher l'article avec le manager get
-        //render vers ma vue modifiée en chargeant l'article
-        return $this->render('article.html.twig', compact('articles'));
-    }
+    public function updateLoadAction()
+{
+    $dataId = filter_input(INPUT_GET,'id');
+    var_dump($dataId);
+    $articleManager = new ArticleManager();
+    $article = $articleManager->find($dataId);
+    return $this->render("admin/articleModify.html.twig",compact('article'));
+}
 
     /**
-     *on supprime les commentaires puis l'article
+     *
+     */
+    public function updateAction()
+    {
+        $info['title'] = filter_input(INPUT_POST, 'title');
+        $info['chapo'] = filter_input(INPUT_POST, 'chapo');
+        $info['content'] = filter_input(INPUT_POST, 'content');
+        $info['author'] = $this->session->getUser('username');
+        $info['articleId'] = filter_input(INPUT_GET, 'id');
+        $articlesManager = new ArticleManager();
+        var_dump($info);
+
+
+        $articlesManager->update($info);
+        $this->redirect('../public/index.php?access=admin');
+
+    }
+
+
+    /**
+     *on supprime les commentaires de l'article puis l'article
      */
     public function deleteAction()
     {
