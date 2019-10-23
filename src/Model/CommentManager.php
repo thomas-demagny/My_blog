@@ -55,7 +55,7 @@ class CommentManager extends Model
     /**
      * @param $commentId
      */
-    public function published($commentId)
+    public function publish($commentId)
     {
         $result = $this->pdo->prepare("UPDATE comments SET statement = 1 WHERE id = ? ");
         $result->execute(array($commentId));
