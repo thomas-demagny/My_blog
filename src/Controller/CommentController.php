@@ -48,7 +48,7 @@ class CommentController extends Controller
     }
 
     /**
-     *
+     *récupère les commentaires non validé
      */
     public function notYetValidatedAction()
     {
