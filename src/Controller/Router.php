@@ -105,7 +105,7 @@ class Router extends Controller
 
 
     /**
-     *Définit la méthode demandé
+     *Définit la méthode demandée
      */
     public function setAction()
     {
