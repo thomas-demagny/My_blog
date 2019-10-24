@@ -4,7 +4,7 @@
 
 body {
     font-family: 'News Cycle', sans-serif;
-    background-color: navajowhite;
+    background-color: darksalmon;
 }
 
 .content {
@@ -19,6 +19,7 @@ body {
 
 .nav-link {
     font-size: 1.5rem;
+
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -97,17 +98,18 @@ address,
 
 /* end contact form */
 
+
 .blog_page,
 .article_page,
 .signin_page {
     padding-top: 9.75rem;
-    line-height: 0.15;
+
 }
 
 
 .comments {
     color: black;
-    border: navajowhite 1px solid;
+    border: steelblue 1px solid;
     background-color: #fff;
 }
 
@@ -243,10 +245,10 @@ footer {
 
 a {
     font-weight: bold;
+    color: steelblue;
+}
+a:hover{
+    color: black;
 }
 
 
-.content {
-    margin: 0;
-    height: auto;
-}
