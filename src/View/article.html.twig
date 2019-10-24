@@ -44,19 +44,20 @@
 
                     {% if comment.statement == 1 %}
                         <!-- Single Comment -->
-                        <div class="media mb-4">
-                            <div class="media-body">
-                                <h5 class="mt-0"> de {{ comment.author }}</h5>
-                                <p> le {{ comment.dte | date ('d-m-Y à H : i') }} </p>
-                                <p class="comments"> {{ comment.content }}</p>
-                            </div>
-                        </div>
+                <div class="card my-4">
+                    <p class="card-header mt-0"> de {{ comment.author }} le {{ comment.dte | date ('d-m-Y à H : i') }}</p>
+                    <div class="card-body">
+                        <p class="comments"> {{ comment.content }}</p>
+                    </div>
+                </div>
                     {% endif %}
                 {% endfor %}
             </div>
         </div>
     </div>
 {% endblock %}
+
+
 
 
 
