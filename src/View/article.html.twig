@@ -1,70 +1,69 @@
 {% extends 'layout/layout.html.twig' %}
 
-{% block content%}
-<!-- Page Content -->
-<div class="container">
-    <div class="row">
-        <!-- Post Content Column -->
-        <div class="col-lg-8">
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <!-- Post Content Column -->
+            <div class="col-lg-8">
 
-            <!-- Title -->
-            <h1 class="mt-4">{{ articles.title }}</h1>
+                <!-- Title -->
+                <h1 class="mt-4">{{ articles.title }}</h1>
+                <!-- Author -->
+                <p class="lead">
+                    par {{ articles.author }}
+                </p>
+                <hr>
+                <!-- Date/Time -->
+                <p>Ecrit le {{ articles.dte | date ('d-m-Y à H : i') }}</p>
+                <p>Modifié le {{ articles.mod_dte  | date ('d-m-Y') }}</p>
 
-            <!-- Author -->
-            <p class="lead">
-                par {{ articles.author }}
-
-            </p>
-
-            <hr>
-
-            <!-- Date/Time -->
-            <p>Ecrit le {{ articles.dte | date ('d-m-Y à H : i') }}</p>
-            <p>Modifié le {{ articles.mod_dte | date ('d-m-Y') }}</p>
-
-
-
-            <!-- Preview Image -->
-            <!--<img class="img-fluid rounded" src="{{ articles.imageLink }}" alt="">-->
-
-            <hr>
-
-            <!-- Post Content -->
-
-            <article class="lead">{{ articles.chapo }}</article>
-
-            <p>{{ articles.content }}</p>
-
-
-
-            <hr>
-            <!-- Comments Form -->
-            <div class="card my-4">
-                <h5 class="card-header">Laisser un commentaire:</h5>
-                <div class="card-body">
-                    <form method="post" action="../public/?id={{ articles.id }}&access=blog!comment">
-                        <label for="comment" class="form-group">
-                            <textarea name="comments" class="form-control" rows="3" cols="150"></textarea>
-                        </label>
-                        {%  if session.user.username is not defined %}
-                            <p>Vous devez être connecter pour commenter !</p>
-                            <button type="submit" class="btn alert"><a href="../public/index.php?access=user!connexion">Connexion</a></button>{% else %}
-                        <button type="submit" class="btn btn-primary">Commenter</button>{% endif %}
-                    </form>
+                <hr>
+                <!-- Post Content -->
+                <article class="lead">{{ articles.chapo }}</article>
+                <p>{{ articles.content }}</p>
+                <hr>
+                <!-- Comments Form -->
+                <div class="card my-4">
+                    <h5 class="card-header">Laissez un commentaire:</h5>
+                    <div class="card-body">
+                        <form method="post" action="../public/?id={{ articles.id }}&access=comment!comment">
+                            <label for="comment" class="form-group">
+                                <textarea name="comments" class="form-control" rows="3" cols="150"></textarea>
+                            </label>
+                            {% if session.user.username is not defined %}
+                                <p>Vous devez être connecté pour commenter !</p>
+                                <button type="submit" class="btn btn-sm btn-secondary"><a
+                                            href="../public/index.php?access=user!connexion">Connexion</a>
+                                </button>
+                            {% else %}
+                                <button type="submit" class="btn btn-sm btn-secondary">Commenter</button>{% endif %}
+                        </form>
+                    </div>
                 </div>
-            </div>
-            {% for comments in comments %}
-            <!-- Single Comment -->
-            <div class="media mb-4">
-                <!--TODO insérer ou non-<img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="photo de l'utilisateur"> -->
-                <div class="media-body">
-                    <h5 class="mt-0"> de {{ comments.author }}</h5>
-                    <p> le {{ comments.dte | date ('d-m-Y à H : i') }} </p>
-                    <p class="comments"> {{ comments.content }}</p>
+                {% for comment in comments %}
+
+                    {% if comment.statement == 1 %}
+                        <!-- Single Comment -->
+                <div class="card my-4">
+                    <p class="card-header mt-0"> de {{ comment.author }} le {{ comment.dte | date ('d-m-Y à H : i') }}</p>
+                    <div class="card-body">
+                        <p class="comments"> {{ comment.content }}</p>
+                    </div>
                 </div>
+                    {% endif %}
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
     </div>
-</div>
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+

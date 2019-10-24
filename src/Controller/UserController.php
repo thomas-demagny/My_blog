@@ -4,8 +4,9 @@
 namespace Controller;
 
 
-use Model\UserManager;
 
+use Model\CommentManager;
+use Model\UserManager;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
@@ -45,17 +46,11 @@ class UserController extends Controller
         $info['surname'] = strtoupper(filter_input(INPUT_POST, 'signupSurname', FILTER_SANITIZE_SPECIAL_CHARS));
         $info['email'] = filter_input(INPUT_POST, 'signupEmail', FILTER_SANITIZE_SPECIAL_CHARS);
 
-
-
-
         $userManager = new UserManager();
-
-
         if ($userManager->controlUser($info['username'], $info['email'])) {
             $this->alert("Un pseudo et/ou une adresse mail existe déjà, merci de vous connecter");
 
             return $this->render('connexion.html.twig', array($info));
-
 
         }
 
@@ -67,13 +62,14 @@ class UserController extends Controller
                 $this->alert("Merci vous êtes bien inscrit");
                 return $this->render('home.html.twig');
             }
-            $this->alert("Vos deux mots de passe doivent être identique");
+            $this->alert("Vos deux mots de passe doivent être identiques");
             return $this->render('connexion.html.twig', compact('info'));
 
         }
         return $this->render('connexion.html.twig');
 
     }
+
     /**
      * @return string
      * @throws LoaderError
@@ -88,7 +84,6 @@ class UserController extends Controller
 //on vérifie que username et password ne soient pas vide
         if (!empty($username) and !empty($password)) {
             $userManager = new UserManager();
-
 
 //Vérifie que l’utilisateur existe avec le username
             $user = $userManager->verifyUser($username);
@@ -126,8 +121,20 @@ class UserController extends Controller
     }
 
 
-
+    /**
+     *
+     */
+    public function deleteAction()
+    {
+        $userId = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+        $commentManager = new CommentManager();
+        $commentManager->deleteToUser($userId);
+        $userManager = new UserManager();
+        $userManager->delete($userId);
+        $this->redirect('../public/index.php?access=admin');
+    }
 }
+
 
 
 

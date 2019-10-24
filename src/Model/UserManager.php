@@ -4,8 +4,6 @@
 namespace Model;
 
 
-
-
 /**
  * Class UserManager
  * @package Model
@@ -13,7 +11,6 @@ namespace Model;
 class UserManager extends Model
 {
 
-//protected $table = 'user';
 
     /**
      * @param $username
@@ -23,7 +20,7 @@ class UserManager extends Model
     {
 
         $result = $this->pdo->prepare('SELECT * FROM user WHERE username = ?');
-        $result->execute (array($username));
+        $result->execute(array($username));
         return $result->fetch();
     }
 
@@ -36,19 +33,19 @@ class UserManager extends Model
         $result->execute();
         return $result->fetchAll();
     }
+
     /**
      * @param $info
      * @return bool
      */
     public function insertUser($info)
     {
-
-
         $result = $this->pdo->prepare("INSERT INTO user (firstname, surname, username, email, password, role, register_date) VALUES (?,?,?,?,?,'membre', CURRENT_DATE)");
         $result = $result->execute(array(
             $info['firstname'], $info['surname'], $info['username'], $info['email'], $info['password']));
         return $result;
     }
+
     /**
      * @param $username
      * @param $email
@@ -79,26 +76,15 @@ class UserManager extends Model
     }
 
     /**
-     * @param $info
-     * @return bool
+     * @param int $userId
      */
-    public function update($info)
+    public function delete($userId)
     {
-
-        $req = $this->pdo->prepare('UPDATE articles SET title = ?, author = ?, chapo = ? , content = ? , dte = NOW() WHERE id =  ? ');
-        $req->execute(array($info['title'], $info['author'], $info['chapo'], $info['content'], $info['artid']));
-        return true;
-    }
-
-
-    /**
-     * @param string $username
-     */
-    public function delete(string $username)
-    {
-        $req = $this->pdo->prepare('DELETE FROM user WHERE username= ? ');
-        $req->execute(array($username));
+        $req = $this->pdo->prepare('DELETE FROM user WHERE id= ? ');
+        $req->execute(array($userId));
     }
 
 
 }
+
+

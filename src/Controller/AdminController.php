@@ -20,60 +20,24 @@ class AdminController extends Controller
 
 
     /**
-     * @param string $articles
-     * @param $comments
-     * @param $user
      * @return string
      * @throws LoaderError
      * @throws RuntimeError
      * @throws SyntaxError
      */
-    public function adminAction()
+    public function indexAction()
     {
-        $dataId = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+
         if ($this->session->getUser('role') === 'admin') {
-
-
-            $articles = new ArticleManager();
-            $articles->findAll();
-            //$comments = new CommentManager();
-            //$comments->findAll();
-
-            //faire boucle for articles pour afficher tous les commentaires de chaques articles.
-            $user = new UserManager();
-            $user->findAll();
+            $articlesManager = new ArticleManager();
+            $articles = $articlesManager->findAll();
+            $commentsManager = new CommentManager();
+            $comments = $commentsManager->notYetValidated();
+            $userManager = new UserManager();
+            $user = $userManager->findAll();
             return $this->render('admin/admin_home.html.twig', compact('articles', 'comments', 'user'));
-        }
-        return $this->render('connexion.html.twig');
-
-
-
-
+        }exit("What the hell !! You want to hack me ?? Get away from here !"); //au cas où quelqu'un tente d'accéder directement à l'admin en passant par l'url
 
     }
 
-    public function createAction()
-    {
-        //création d'un nouvel article
-    }
-
-    public function readAction()
-    {
-        //édition des articles et des commentaires
-    }
-
-    public function updateAction()
-    {
-        //modifications des articles
-    }
-
-    public function deleteAction()
-    {
-        //suppression
-    }
-
-    public function moderateAction()
-    {
-        //moderation des commentaires
-    }
 }

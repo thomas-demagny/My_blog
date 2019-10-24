@@ -12,7 +12,6 @@ use PDOStatement;
  */
 class CommentManager extends Model
 {
-//protected $table = 'comments';
 
 
     /**
@@ -44,9 +43,9 @@ class CommentManager extends Model
     /**
      * @return array|bool|PDOStatement
      */
-    public function notyetvalidated()
+    public function notYetValidated()
     {
-        $result = $this->pdo->prepare('SELECT id, dte, content, user_id FROM comments WHERE statement = 0 ORDER BY dte');
+        $result = $this->pdo->prepare('SELECT id, author, dte, content, user_id FROM comments WHERE statement = 0 AND articles_id ORDER BY articles_id DESC ');
         $result->execute();
         $result = $result->fetchAll();
         return $result;
@@ -55,7 +54,7 @@ class CommentManager extends Model
     /**
      * @param $commentId
      */
-    public function published($commentId)
+    public function publish($commentId)
     {
         $result = $this->pdo->prepare("UPDATE comments SET statement = 1 WHERE id = ? ");
         $result->execute(array($commentId));
@@ -69,4 +68,24 @@ class CommentManager extends Model
         $result = $this->pdo->prepare('DELETE FROM comments WHERE id= ?');
         $result->execute(array($commentId));
     }
+
+    /**
+     * @param $dataId
+     */
+    public function deleteFromArticle($dataId)
+    {
+        $result = $this->pdo->prepare('DELETE FROM comments WHERE articles_id= ?');
+        $result->execute(array($dataId));
+
+    }
+
+    /**
+     * @param $userId
+     */
+    public function deleteToUser($userId)
+    {
+        $result = $this->pdo->prepare('DELETE FROM comments WHERE user_id= ?');
+        $result->execute(array($userId));
+    }
+
 }
