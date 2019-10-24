@@ -40,8 +40,6 @@ class UserManager extends Model
      */
     public function insertUser($info)
     {
-
-
         $result = $this->pdo->prepare("INSERT INTO user (firstname, surname, username, email, password, role, register_date) VALUES (?,?,?,?,?,'membre', CURRENT_DATE)");
         $result = $result->execute(array(
             $info['firstname'], $info['surname'], $info['username'], $info['email'], $info['password']));
@@ -78,19 +76,6 @@ class UserManager extends Model
     }
 
     /**
-     * @param $info
-     * @return bool
-     */
-    public function update($info)
-    {
-
-        $req = $this->pdo->prepare('UPDATE articles SET title = ?, author = ?, chapo = ? , content = ? , dte = NOW() WHERE id =  ? ');
-        $req->execute(array($info['title'], $info['author'], $info['chapo'], $info['content'], $info['artid']));
-        return true;
-    }
-
-
-    /**
      * @param int $userId
      */
     public function delete($userId)
@@ -101,3 +86,5 @@ class UserManager extends Model
 
 
 }
+
+

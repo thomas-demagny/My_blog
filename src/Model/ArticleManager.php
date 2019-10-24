@@ -43,7 +43,7 @@ class ArticleManager extends Model
      */
     public function insert(array $info)
     {
-        $result = $this->pdo->prepare('INSERT INTO articles (title, author, chapo, content, dte, mod_dte ) VALUES (?,?,?,?, NOW(), CURRENT_DATE())');
+        $result = $this->pdo->prepare('INSERT INTO articles (title, author, chapo, content, dte, mod_dte ) VALUES (?,?,?,?, NOW(), NOW())');
         $result->execute(array($info['title'], $info['author'], $info['chapo'], $info['content']));
     }
 
@@ -54,7 +54,7 @@ class ArticleManager extends Model
      */
     public function update(array $info)
     {
-        $result = $this->pdo->prepare('UPDATE articles SET title = ?, author = ?, chapo = ? , content = ? , dte = NOW() WHERE id = ? ');
+        $result = $this->pdo->prepare('UPDATE articles SET title = ?, author = ?, chapo = ? , content = ? , dte = NOW(), mod_dte= NOW() WHERE id = ? ');
         $result->execute(array($info['title'], $info['author'], $info['chapo'], $info['content'], $info['articleId']));
         return true;
 
