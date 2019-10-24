@@ -59,6 +59,14 @@ class CommentController extends Controller
 
     }
 
+    public function validateAction()
+    {
+        $dataId = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+        $commentManager = new CommentManager();
+        $commentManager->publish($dataId);
+        $this->redirect('../public/index.php?access=admin');
+    }
+
     /**
      * @return string
      */

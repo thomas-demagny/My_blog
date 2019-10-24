@@ -79,14 +79,14 @@ class ArticleController extends Controller
     public function updateLoadAction()
 {
     $dataId = filter_input(INPUT_GET,'id');
-    var_dump($dataId);
     $articleManager = new ArticleManager();
     $article = $articleManager->find($dataId);
     return $this->render("admin/articleModify.html.twig",compact('article'));
 }
 
+
     /**
-     *
+     * @return string
      */
     public function updateAction()
     {
@@ -95,10 +95,8 @@ class ArticleController extends Controller
         $info['content'] = filter_input(INPUT_POST, 'content');
         $info['author'] = $this->session->getUser('username');
         $info['articleId'] = filter_input(INPUT_GET, 'id');
+
         $articlesManager = new ArticleManager();
-        var_dump($info);
-
-
         $articlesManager->update($info);
         $this->redirect('../public/index.php?access=admin');
 
@@ -116,8 +114,8 @@ class ArticleController extends Controller
         $commentManager->deleteFromArticle($dataId);
         $articleManager = new ArticleManager();
         $articleManager->delete($dataId);
-        $this->redirect('../public/index.php?access=admin');
-        $this->alert('Etes vous certain de vouloir supprimer cet article ?');
+        $this->redirect('../public/index.php?access=admin#gestart');
+
 
     }
 
