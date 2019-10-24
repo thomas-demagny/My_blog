@@ -12,7 +12,6 @@ use PDOStatement;
  */
 class CommentManager extends Model
 {
-//protected $table = 'comments';
 
 
     /**

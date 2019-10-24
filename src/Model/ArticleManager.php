@@ -10,7 +10,6 @@ namespace Model;
  */
 class ArticleManager extends Model
 {
-//protected $table = 'articles';
 
 
     /**

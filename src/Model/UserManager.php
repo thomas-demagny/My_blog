@@ -4,8 +4,6 @@
 namespace Model;
 
 
-
-
 /**
  * Class UserManager
  * @package Model
@@ -13,7 +11,6 @@ namespace Model;
 class UserManager extends Model
 {
 
-//protected $table = 'user';
 
     /**
      * @param $username
@@ -23,7 +20,7 @@ class UserManager extends Model
     {
 
         $result = $this->pdo->prepare('SELECT * FROM user WHERE username = ?');
-        $result->execute (array($username));
+        $result->execute(array($username));
         return $result->fetch();
     }
 
@@ -36,6 +33,7 @@ class UserManager extends Model
         $result->execute();
         return $result->fetchAll();
     }
+
     /**
      * @param $info
      * @return bool
@@ -49,6 +47,7 @@ class UserManager extends Model
             $info['firstname'], $info['surname'], $info['username'], $info['email'], $info['password']));
         return $result;
     }
+
     /**
      * @param $username
      * @param $email
@@ -92,12 +91,12 @@ class UserManager extends Model
 
 
     /**
-     * @param string $username
+     * @param int $userId
      */
-    public function delete(string $username)
+    public function delete($userId)
     {
-        $req = $this->pdo->prepare('DELETE FROM user WHERE username= ? ');
-        $req->execute(array($username));
+        $req = $this->pdo->prepare('DELETE FROM user WHERE id= ? ');
+        $req->execute(array($userId));
     }
 
 
