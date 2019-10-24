@@ -5,6 +5,7 @@ namespace Controller;
 
 
 
+use Model\CommentManager;
 use Model\UserManager;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -126,6 +127,8 @@ class UserController extends Controller
     public function deleteAction()
     {
         $userId = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+        $commentManager = new CommentManager();
+        $commentManager->deleteToUser($userId);
         $userManager = new UserManager();
         $userManager->delete($userId);
         $this->redirect('../public/index.php?access=admin');
