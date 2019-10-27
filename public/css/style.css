@@ -101,7 +101,7 @@ address,
 
 .blog_page,
 .article_page,
-.signin_page {
+.signin_page, .error {
     padding-top: 9.75rem;
 
 }
