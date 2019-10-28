@@ -135,7 +135,7 @@
                                 <b>Email : </b>{{ user.email }}
                                 <b>Rôle : </b>{{ user.role }}
                                 <div class="mt-1">
-                                    {% if session.user.role is defined and session.user.role is not same as('admin') %}
+                                    {% if session.user.role == 'admin' %}
                                         <a class="btn  btn-sm btn-outline-danger"
                                            href="../public/?id={{ user.id }}&access=user!delete" onclick="return window.confirm('Êtes-vous certain de vouloir supprimer cette utilisateur ?!')">Supprimer
                                         </a>
@@ -151,6 +151,7 @@
         </div>
     </nav>
 {% endblock %}
+
 
 
 
