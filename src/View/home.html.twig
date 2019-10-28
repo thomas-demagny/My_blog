@@ -11,7 +11,7 @@
                     le code aussi...<br/>
                     Mais le plus simple c'est encore de consulter mon CV ainsi que mon portfolio!</p>
                 <p><a class="btn btn-secondary btn-lg btn-cv" role="button"
-                      href="../public/images/Cv-Thomas-Demagny.pdf">MON CV</a></p>
+                      href="../public/images/Cv-Thomas-Demagny.pdf" onclick="window.open(this.href);return false">MON CV</a></p>
             </div>
         </div>
     </header>
@@ -42,7 +42,7 @@
                                data-validation-required-message="Ce champ est obligatoire !">
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" rows="8" required
+                        <textarea class="form-control" rows="8" required id="content"
                                   data-validation-required-message="Ce champ est obligatoire"
                                   placeholder="Votre message"></textarea>
                     </div>

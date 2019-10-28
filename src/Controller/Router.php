@@ -78,16 +78,16 @@ class Router extends Controller
 
     /**
      *Analyse de l'url et va chercher le controller et sa méthode
-     */
+*/
     public function parseUrl()
     {
         $access = filter_input(INPUT_GET, 'access');
         if (!isset($access)) {
-            $access = 'home';
+            $access = 'home!index';
         }
         $access = explode('!', $access);
         $this->controller = $access[0];
-        $this->action = count($access) == 1 ? 'index' : $access[1];
+        $this->action = count($access) == 1 ? 'error' : $access[1];
     }
 
 

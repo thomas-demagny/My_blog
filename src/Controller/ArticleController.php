@@ -43,16 +43,18 @@ class ArticleController extends Controller
     public function readAction()
     {
         $dataId = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-        $articlesManager = new ArticleManager();
-        $articles = $articlesManager->find($dataId);;
-
-        $commentManager = new CommentManager();
-        $comments = $commentManager->findAll($dataId);
-
-
-        return $this->render('article.html.twig', compact('articles', 'comments'));
+        if ($dataId != '') {
+            $articlesManager = new ArticleManager();
+            $articles = $articlesManager->find($dataId);;
+            $commentManager = new CommentManager();
+            $comments = $commentManager->findAll($dataId);
+            if ($articles != null){
+                return $this->render('article.html.twig', compact('articles', 'comments'));
+            }$this->redirect('../public/index.php?access=home');
+        }$this->redirect('../public/index.php?access=home');
 
     }
+
 
     /**
      * pour la création d'article
@@ -77,12 +79,12 @@ class ArticleController extends Controller
      * @throws SyntaxError
      */
     public function updateLoadAction()
-{
-    $dataId = filter_input(INPUT_GET,'id');
-    $articleManager = new ArticleManager();
-    $article = $articleManager->find($dataId);
-    return $this->render("admin/articleModify.html.twig",compact('article'));
-}
+    {
+        $dataId = filter_input(INPUT_GET, 'id');
+        $articleManager = new ArticleManager();
+        $article = $articleManager->find($dataId);
+        return $this->render("admin/articleModify.html.twig", compact('article'));
+    }
 
 
     /**
@@ -114,7 +116,7 @@ class ArticleController extends Controller
         $commentManager->deleteFromArticle($dataId);
         $articleManager = new ArticleManager();
         $articleManager->delete($dataId);
-        $this->redirect('../public/index.php?access=admin#gestart');
+        $this->redirect('../public/index.php?access=admin');
 
 
     }
