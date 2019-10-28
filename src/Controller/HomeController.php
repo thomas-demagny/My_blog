@@ -60,16 +60,18 @@ class HomeController extends Controller
     public function mailAction()
     {
         $name = filter_input(INPUT_POST, 'name');
-        $mail = filter_input(INPUT_POST, 'mail');
-        $content = filter_input(INPUT_POST, 'message');
+        $surname = filter_input(INPUT_POST, 'surname');
+        $mail = filter_input(INPUT_POST, 'email');
+        $content = filter_input(INPUT_POST, 'content');
+
         $from = "tom10440@saumon.o2switch.net";
         $email = "demagny.t@gmail.com";
-        $subject = 'message de ' . $name . ' <' . $mail . '>';
+        $object = 'message de ' . $name . $surname . ' <' . $mail . '>';
         $message = $content;
         $header = 'MIME-Version: 1.0' . "\r\n";
         $header .= 'Content-type: text/html; charset=utf-8' . "\r\n";
         $header .= 'From: ' . $from . "\r\n";
-        mail($email, $subject, $message, $header);
+        mail($email, $object, $message, $header);
         $this->alert('Votre mail à bien été envoyé.');
         return $this->render('home.html.twig');
     }
